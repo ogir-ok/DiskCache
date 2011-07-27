@@ -20,20 +20,20 @@ FSArea_imp::~FSArea_imp()
 	close(this->_streamId);
 }
 
-void* FSArea_imp::GetBlock(int blockId)
+void* FSArea_imp::GetBlock(int BlockNum)
 {
 	pthread_mutex_lock(&(this->_lock));
-	lseek(this->_streamId,blockId*BLOCK_SIZE,SEEK_SET);
-	void *buff;
+	lseek(this->_streamId,BlockNum*BLOCK_SIZE,SEEK_SET);
+	void *buff = NULL;
 	read(this->_streamId,buff,BLOCK_SIZE);
 	pthread_mutex_unlock(&(this->_lock));
 	return buff;
 }
 
-void FSArea_imp::SetBlock(int blockId,void* value)
+void FSArea_imp::SetBlock(int BlockNum,void* value)
 {
 	pthread_mutex_lock(&(this->_lock));
-	lseek(this->_streamId,blockId*BLOCK_SIZE,SEEK_SET);
+	lseek(this->_streamId,BlockNum*BLOCK_SIZE,SEEK_SET);
 	write(this->_streamId,value,BLOCK_SIZE);
 	pthread_mutex_unlock(&(this->_lock));
 }

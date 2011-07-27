@@ -15,6 +15,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#define DISKS_CONFIG_FILE "./.disks.conf"
 #define BLOCK_SIZE 4
 
 class FSArea
@@ -24,8 +25,8 @@ public:
  * 	virtual FSArea();
  	virtual ~FSArea();
 */
-	virtual void* GetBlock(int blockId)=0;
-	virtual void SetBlock(int blockId,void* value)=0;
+	virtual void* GetBlock(int BlockNum)=0;
+	virtual void SetBlock(int BlockNum,void* value)=0;
 };
 
 class FSArea_imp: public FSArea
