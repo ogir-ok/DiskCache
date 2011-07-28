@@ -10,6 +10,34 @@
 #define DRIVERFS_H_
 
 #include "FSArea.h"
+/**/
+
+template<typename T>
+class Singleton
+{
+public:
+	Singleton()                                { clear(); }
+
+    T* operator->()                     { return get0(); }
+    const T* operator->() const         { return get0(); }
+    void operator=(T* t)                { data = t; }
+
+    bool isEmpty() const                { return data == 0; }
+    void clear()                        { data = 0; }
+    void init()                         { if (isEmpty()) reinit(); }
+    void reinit()                       { SingletonFill(*this); }
+    void SingletonFill(Singleton<T>& current)
+    {
+    	  //
+    }
+private:
+    T* get0() const
+    {
+        const_cast<Singleton*>(this)->init();
+        return data;
+    }
+    T* data;
+};
 
 class FSDriver//virtual class
 {
@@ -30,4 +58,12 @@ public:
 	void* GetBlock(int fsId, int BlockNum);
 	void SetBlock(int fsId, int BlockNum, void* value);
 };
+
+template<>
+void Singleton<FSDriver>::SingletonFill(Singleton<FSDriver>& current)
+{
+	static FSDriver_imp temp;
+	current = &temp;
+}
+
 #endif /* DRIVERFS_H_ */
