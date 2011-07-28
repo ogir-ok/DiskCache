@@ -33,11 +33,11 @@ class FSArea_imp: public FSArea
 {
 private:
 	pthread_mutex_t _lock;
-	int _streamId;  //Id of filestream
+	int _fileStreamId;  //Id of filestream
 public:
 	FSArea_imp(const char* fileName);
 	~FSArea_imp();
-	void* GetBlock(int blockId);
-	void SetBlock(int blockId,void* value);
+	void* GetBlock(int BlockNum);
+	void SetBlock(int BlockNum,void* value);
 };
 #endif /* FSAREA_H_ */
