@@ -18,6 +18,11 @@ class Singleton
 private:
     T* get0() const;
     T* _data;
+    bool isEmpty() const;
+    void clear();
+    void init();
+    void reinit();
+    void SingletonFill(Singleton<T>& current);
 
 public:
 	Singleton();
@@ -25,13 +30,6 @@ public:
     T* operator->();
     const T* operator->() const;
     void operator=(T* t);
-
-    bool isEmpty() const;
-    void clear();
-    void init();
-    void reinit();
-    void SingletonFill(Singleton<T>& current);
-
 };
 
 class FSDriver//virtual class
@@ -43,10 +41,11 @@ public:
 
 class FSDriver_imp: public FSDriver  //reload virtual class FSDriver
 {
+private:
 	int _areaCount;
 	FSArea* _areaList[];
-public:
 
+public:
 	FSDriver_imp();
 	~FSDriver_imp();
 
