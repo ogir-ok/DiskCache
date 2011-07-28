@@ -10,7 +10,7 @@ template<typename T>
 T* Singleton<T>::get0() const
 {
     const_cast<Singleton<T>*>(this)->init();
-    return this->data;
+    return this->_data;
 }
 
 template<typename T>
@@ -34,19 +34,19 @@ const T* Singleton<T>::operator->() const
 template<typename T>
 void Singleton<T>::operator=(T* t)
 {
-	this->data = t;
+	this->_data = t;
 }
 
 template<typename T>
 bool Singleton<T>::isEmpty() const
 {
-	return this->data == 0;
+	return this->_data == 0;
 }
 
 template<typename T>
 void Singleton<T>::clear()
 {
-	this->data = 0;
+	this->_data = 0;
 }
 
 template<typename T>

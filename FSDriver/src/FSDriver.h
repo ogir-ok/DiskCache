@@ -17,7 +17,7 @@ class Singleton
 {
 private:
     T* get0() const;
-    T* data;
+    T* _data;
 
 public:
 	Singleton();
