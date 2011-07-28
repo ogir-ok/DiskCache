@@ -6,10 +6,74 @@
  */
 # include "FSDriver.h"
 
+template<typename T>
+T* Singleton<T>::get0() const
+{
+    const_cast<Singleton<T>*>(this)->init();
+    return this->_data;
+}
 
+template<typename T>
+Singleton<T>::Singleton()
+{
+	clear();
+}
 
+template<typename T>
+T* Singleton<T>::operator->()
+{
+	return get0();
+}
 
+template<typename T>
+const T* Singleton<T>::operator->() const
+{
+	return get0();
+}
 
+template<typename T>
+void Singleton<T>::operator=(T* t)
+{
+	this->_data = t;
+}
+
+template<typename T>
+bool Singleton<T>::isEmpty() const
+{
+	return this->_data == 0;
+}
+
+template<typename T>
+void Singleton<T>::clear()
+{
+	this->_data = 0;
+}
+
+template<typename T>
+void Singleton<T>::init()
+{
+	if (this->isEmpty())
+		this->reinit();
+}
+
+template<typename T>
+void Singleton<T>::reinit()
+{
+	this->SingletonFill(*this);
+}
+
+template<typename T>
+void Singleton<T>::SingletonFill(Singleton<T>& current)
+{
+	//
+}
+
+template<>
+void Singleton<FSDriver>::SingletonFill(Singleton<FSDriver>& current)
+{
+	static FSDriver_imp temp;
+	current = &temp;
+}
 
 FSDriver_imp::FSDriver_imp()
 {

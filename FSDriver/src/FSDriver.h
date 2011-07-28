@@ -15,28 +15,21 @@
 template<typename T>
 class Singleton
 {
-public:
-	Singleton()                                { clear(); }
-
-    T* operator->()                     { return get0(); }
-    const T* operator->() const         { return get0(); }
-    void operator=(T* t)                { data = t; }
-
-    bool isEmpty() const                { return data == 0; }
-    void clear()                        { data = 0; }
-    void init()                         { if (isEmpty()) reinit(); }
-    void reinit()                       { SingletonFill(*this); }
-    void SingletonFill(Singleton<T>& current)
-    {
-    	  //
-    }
 private:
-    T* get0() const
-    {
-        const_cast<Singleton*>(this)->init();
-        return data;
-    }
-    T* data;
+    T* get0() const;
+    T* _data;
+    bool isEmpty() const;
+    void clear();
+    void init();
+    void reinit();
+    void SingletonFill(Singleton<T>& current);
+
+public:
+	Singleton();
+
+    T* operator->();
+    const T* operator->() const;
+    void operator=(T* t);
 };
 
 class FSDriver//virtual class
@@ -48,10 +41,11 @@ public:
 
 class FSDriver_imp: public FSDriver  //reload virtual class FSDriver
 {
+private:
 	int _areaCount;
 	FSArea* _areaList[];
-public:
 
+public:
 	FSDriver_imp();
 	~FSDriver_imp();
 
@@ -59,11 +53,6 @@ public:
 	void SetBlock(int fsId, int BlockNum, void* value);
 };
 
-template<>
-void Singleton<FSDriver>::SingletonFill(Singleton<FSDriver>& current)
-{
-	static FSDriver_imp temp;
-	current = &temp;
-}
+
 
 #endif /* DRIVERFS_H_ */
