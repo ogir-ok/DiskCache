@@ -13,10 +13,10 @@
 /**/
 
 template<typename T>
-class An
+class Singleton
 {
 public:
-    An()                                { clear(); }
+	Singleton()                                { clear(); }
 
     T* operator->()                     { return get0(); }
     const T* operator->() const         { return get0(); }
@@ -25,19 +25,15 @@ public:
     bool isEmpty() const                { return data == 0; }
     void clear()                        { data = 0; }
     void init()                         { if (isEmpty()) reinit(); }
-    void reinit()                       { anFill(*this); }
-    void anFill(An<T>& a)
+    void reinit()                       { SingletonFill(*this); }
+    void SingletonFill(Singleton<T>& current)
     {
+    	  //
     }
-    void anFill<FSDriver>(An<FSDriver>& current)
-	{
-		static FSDriver_imp temp;
-		current = &temp;
-	}
 private:
     T* get0() const
     {
-        const_cast<An*>(this)->init();
+        const_cast<Singleton*>(this)->init();
         return data;
     }
     T* data;
@@ -62,4 +58,12 @@ public:
 	void* GetBlock(int fsId, int BlockNum);
 	void SetBlock(int fsId, int BlockNum, void* value);
 };
+
+template<>
+void Singleton<FSDriver>::SingletonFill(Singleton<FSDriver>& current)
+{
+	static FSDriver_imp temp;
+	current = &temp;
+}
+
 #endif /* DRIVERFS_H_ */
