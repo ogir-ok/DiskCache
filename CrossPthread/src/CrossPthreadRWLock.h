@@ -10,24 +10,34 @@
 
 #include <pthread.h>
 
-class CrossPthreadRWLock
-{
-public:
-	virtual void WrLock()=0;
-	virtual void RdLock()=0;
-	virtual void Unlock()=0;
-};
+#ifndef LINUX
 
-class CrossPthreadRWLock_imp_unix: public CrossPthreadRWLock
+class CrossPthreadRWLock
 {
 private:
 	pthread_rwlock_t _rwlock;
 public:
-	CrossPthreadRWLock_imp_unix();
-	~CrossPthreadRWLock_imp_unix();
+	CrossPthreadRWLock();
+	~CrossPthreadRWLock();
 	void WrLock();
 	void RdLock();
 	void Unlock();
 };
+
+#elif WINDOWS
+
+class CrossPthreadRWLock
+{
+private:
+	pthread_rwlock_t _rwlock;
+public:
+	CrossPthreadRWLock();
+	~CrossPthreadRWLock();
+	void WrLock();
+	void RdLock();
+	void Unlock();
+};
+
+#endif
 
 #endif /* CROSSPTHREADRWLOCK_H_ */

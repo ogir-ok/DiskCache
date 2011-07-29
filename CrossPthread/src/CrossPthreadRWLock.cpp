@@ -6,28 +6,32 @@
  */
 #include "CrossPthreadRWLock.h"
 
-CrossPthreadRWLock_imp_unix::CrossPthreadRWLock_imp_unix()
+#ifndef LINUX
+
+CrossPthreadRWLock::CrossPthreadRWLock()
 {
 	pthread_rwlock_init(&(this->_rwlock),NULL);
 }
 
 
-CrossPthreadRWLock_imp_unix::~CrossPthreadRWLock_imp_unix()
+CrossPthreadRWLock::~CrossPthreadRWLock()
 {
 	pthread_rwlock_destroy(&(this->_rwlock));
 }
 
-void CrossPthreadRWLock_imp_unix::WrLock()
+void CrossPthreadRWLock::WrLock()
 {
 	pthread_rwlock_wrlock(&(this->_rwlock));
 }
 
-void CrossPthreadRWLock_imp_unix::RdLock()
+void CrossPthreadRWLock::RdLock()
 {
 	pthread_rwlock_rdlock(&(this->_rwlock));
 }
 
-void CrossPthreadRWLock_imp_unix::Unlock()
+void CrossPthreadRWLock::Unlock()
 {
 	pthread_rwlock_unlock(&(this->_rwlock));
 }
+
+#endif

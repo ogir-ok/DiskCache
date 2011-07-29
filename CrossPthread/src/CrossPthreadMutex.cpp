@@ -6,22 +6,24 @@
  */
 #include "CrossPthreadMutex.h"
 
-CrossPthreadMutex_imp_unix::CrossPthreadMutex_imp_unix()
+#ifndef LINUX
+
+CrossPthreadMutex::CrossPthreadMutex()
 {
 	pthread_mutex_init(&(this->_mutex),NULL);
 }
-CrossPthreadMutex_imp_unix::~CrossPthreadMutex_imp_unix()
+CrossPthreadMutex::~CrossPthreadMutex()
 {
 	pthread_mutex_destroy(&(this->_mutex));
 
 }
-void CrossPthreadMutex_imp_unix::Lock()
+void CrossPthreadMutex::Lock()
 {
 	pthread_mutex_lock(&(this->_mutex));
 
 }
-void CrossPthreadMutex_imp_unix::Unlock()
+void CrossPthreadMutex::Unlock()
 {
 	pthread_mutex_unlock(&(this->_mutex));
 }
-
+#endif
