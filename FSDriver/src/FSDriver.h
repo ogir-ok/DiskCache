@@ -13,7 +13,6 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
 class FSDriver  //reload virtual class FSDriver
 {
 private:
@@ -32,14 +31,12 @@ public:
 
 
 
-/**/
-/*
 template<typename T>
 class Singleton
 {
 private:
     T* get0() const;
-    T* _data;
+    static T* _data;
     bool isEmpty() const;
     void clear();
     void init();
@@ -53,5 +50,3 @@ public:
     const T* operator->() const;
     void operator=(T* t);
 };
-
-*/
