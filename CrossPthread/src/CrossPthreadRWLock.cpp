@@ -13,19 +13,22 @@ CrossPthreadRWLock_imp_unix::CrossPthreadRWLock_imp_unix()
 }
 
 
-CrossPthreadRWLock_imp_unix::~CrossPthreadRWLock_imp_unix();
+CrossPthreadRWLock_imp_unix::~CrossPthreadRWLock_imp_unix()
 {
-	pthread_rwlock_destroy(&(this->_rwlock),NULL);
+	pthread_rwlock_destroy(&(this->_rwlock));
 }
 
-void CrossPthreadRWLock_imp_unix::WrLock();
+void CrossPthreadRWLock_imp_unix::WrLock()
 {
-	pthrea(&(this->_rwlock),NULL);
+	pthread_rwlock_wrlock(&(this->_rwlock));
 }
 
-void CrossPthreadRWLock_imp_unix::RdLock();
+void CrossPthreadRWLock_imp_unix::RdLock()
 {
+	pthread_rwlock_rdlock(&(this->_rwlock));
 }
-void CrossPthreadRWLock_imp_unix::Unlock();
+
+void CrossPthreadRWLock_imp_unix::Unlock()
 {
-	}
+	pthread_rwlock_unlock(&(this->_rwlock));
+}
