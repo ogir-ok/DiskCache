@@ -40,3 +40,4 @@ void FSArea::SetBlock(int BlockNum,void* value)
 	this->_fileStreamId->Write(value,BLOCK_SIZE);
 	this->_mutex->Unlock();
 }
+//
