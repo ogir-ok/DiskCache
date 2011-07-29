@@ -26,14 +26,14 @@ public:
 	virtual void SetBlock(int BlockNum,void* value)=0;
 };
 
-class FSAreaUnix_imp: public FSArea
+class FSArea_imp_unix: public FSArea
 {
 private:
 	pthread_mutex_t _lock;
 	int _fileStreamId;  //Id of filestream
 public:
-	FSAreaUnix_imp(const char* fileName);
-	~FSAreaUnix_imp();
+	FSArea_imp_unix(const char* fileName);
+	~FSArea_imp_unix();
 	void* GetBlock(int BlockNum);
 	void SetBlock(int BlockNum,void* value);
 };
