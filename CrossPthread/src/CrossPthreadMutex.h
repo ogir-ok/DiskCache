@@ -19,6 +19,7 @@ public:
 
 class CrossPthreadMutex_imp_unix: public CrossPthreadMutex
 {
+private:
 	pthread_mutex_t _mutex;
 public:
 	CrossPthreadMutex_imp_unix();
