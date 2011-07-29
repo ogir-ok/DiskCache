@@ -24,7 +24,7 @@
 class FSArea
 {
 private:
-	CrossPthreadMutex _lock;
+	CrossPthreadMutex _mutex;
 	int _fileStreamId;  //Id of filestream
 public:
 	FSArea(const char* fileName);
