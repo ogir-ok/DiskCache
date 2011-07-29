@@ -1,5 +1,5 @@
 /*
- * FSArea_imp_unix.cpp
+ * FSArea.cpp
  *
  *  Created on: Jul 27, 2011
  *      Author: user
@@ -7,33 +7,35 @@
 #include "FSArea.h"
 #include <sys/types.h>
 #include <unistd.h>
-
-FSArea_imp_unix::FSArea_imp_unix(const char* fileName)
+/*
+FSArea::FSArea(const char* fileName)
 {
+
 	this->_fileStreamId=open(fileName,O_RDWR|O_SYNC);
-	pthread_mutex_init(&(this->_lock),NULL);
+	//pthread_mutex_init(&(this->_lock),NULL);
 }
 
-FSArea_imp_unix::~FSArea_imp_unix()
+FSArea::~FSArea()
 {
-	pthread_mutex_destroy(&(this->_lock));
+	//pthread_mutex_destroy(&(this->_lock));
 	close(this->_fileStreamId);
 }
 
-void* FSArea_imp_unix::GetBlock(int BlockNum)
+void* FSArea::GetBlock(int BlockNum)
 {
-	pthread_mutex_lock(&(this->_lock));
+	//pthread_mutex_lock(&(this->_lock));
 	lseek(this->_fileStreamId,BlockNum*BLOCK_SIZE,SEEK_SET);
 	void *buff = NULL;
 	read(this->_fileStreamId,buff,BLOCK_SIZE);
-	pthread_mutex_unlock(&(this->_lock));
+	//pthread_mutex_unlock(&(this->_lock));
 	return buff;
 }
 
-void FSArea_imp_unix::SetBlock(int BlockNum,void* value)
+void FSArea::SetBlock(int BlockNum,void* value)
 {
-	pthread_mutex_lock(&(this->_lock));
+	//pthread_mutex_lock(&(this->_lock));
 	lseek(this->_fileStreamId,BlockNum*BLOCK_SIZE,SEEK_SET);
 	write(this->_fileStreamId,value,BLOCK_SIZE);
-	pthread_mutex_unlock(&(this->_lock));
+	//pthread_mutex_unlock(&(this->_lock));
 }
+*/
