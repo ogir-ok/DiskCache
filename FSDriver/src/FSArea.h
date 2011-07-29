@@ -15,11 +15,11 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "CrossPthreadMutex.h"
-#include "CrossPthreadRWLock.h"
+#include <CrossPthreadMutex.h>
 
 #define DISKS_CONFIG_FILE "./.disks.conf"
 #define BLOCK_SIZE 4
+#define LINUX 1
 
 //Abstract factory
 class FSArea
@@ -32,7 +32,7 @@ public:
 class FSArea_imp_unix: public FSArea
 {
 private:
-	pthread_mutex_t _lock;
+	CrossPthreadMutex _lock;
 	int _fileStreamId;  //Id of filestream
 public:
 	FSArea_imp_unix(const char* fileName);
