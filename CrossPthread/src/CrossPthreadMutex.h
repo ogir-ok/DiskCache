@@ -21,7 +21,7 @@ public:
 	void Lock();
 	void Unlock();
 };
-
+/*
 #elif WINDOWS
 /*class CrossPthreadMutex
 {
