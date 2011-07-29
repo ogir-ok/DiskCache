@@ -5,7 +5,6 @@
  *      Author: user
  */
 #include "CrossPthreadRWLock.h"
-#include <pthread.h>
 
 CrossPthreadRWLock_imp_unix::CrossPthreadRWLock_imp_unix()
 {
