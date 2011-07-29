@@ -6,7 +6,6 @@
  */
 #include "FSDriver.h"
 
-/*
 template<typename T>
 T* Singleton<T>::get0() const
 {
@@ -75,35 +74,6 @@ void Singleton<FSDriver>::SingletonFill(Singleton<FSDriver>& current)
 	static FSDriver temp;
 	current = &temp;
 }
-
-FSDriver::FSDriver()
-{
-	FILE* configFile = fopen(DISKS_CONFIG_FILE,"r");
-	int disksCount = 0;
-	fscanf(configFile,"%d",&disksCount);
-//	this->_areaList = FSArea[disksCount];
-	for (int i=0;i<disksCount;i++)
-	{
-		char* diskPath=NULL;
-		fscanf(configFile,"%s",diskPath);
-//		this->_areaList[i] = new FSArea(diskPath);
-	}
-}
-
-FSDriver::~FSDriver()
-{
-}
-
-void* FSDriver::GetBlock(int fsId, int BlockNum)
-{
-	return this->_areaList[fsId]->GetBlock(BlockNum);
-}
-
-void FSDriver::SetBlock(int fsId, int BlockNum,void* value)
-{
-	return this->_areaList[fsId]->SetBlock(BlockNum,value);
-}
-*/
 
 FSDriver::FSDriver()
 {
