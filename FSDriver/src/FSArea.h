@@ -18,25 +18,22 @@
 #define DISKS_CONFIG_FILE "./.disks.conf"
 #define BLOCK_SIZE 4
 
+//Abstract factory
 class FSArea
 {
 public:
-/*
- * 	virtual FSArea();
- 	virtual ~FSArea();
-*/
 	virtual void* GetBlock(int BlockNum)=0;
 	virtual void SetBlock(int BlockNum,void* value)=0;
 };
 
-class FSArea_imp: public FSArea
+class FSArea_imp_unix: public FSArea
 {
 private:
 	pthread_mutex_t _lock;
 	int _fileStreamId;  //Id of filestream
 public:
-	FSArea_imp(const char* fileName);
-	~FSArea_imp();
+	FSArea_imp_unix(const char* fileName);
+	~FSArea_imp_unix();
 	void* GetBlock(int BlockNum);
 	void SetBlock(int BlockNum,void* value);
 };
