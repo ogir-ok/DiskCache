@@ -6,7 +6,7 @@
  */
 #include "CrossPthreadMutex.h"
 
-#ifndef LINUX
+#ifdef LINUX
 
 CrossPthreadMutex::CrossPthreadMutex()
 {

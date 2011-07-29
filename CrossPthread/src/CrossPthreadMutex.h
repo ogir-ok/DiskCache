@@ -7,7 +7,7 @@
 #ifndef CROSSPTHREADMUTEX_H_
 #define CROSSPTHREADMUTEX_H_
 
-#ifndef LINUX
+#ifdef LINUX
 
 #include <pthread.h>
 

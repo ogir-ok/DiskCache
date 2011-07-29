@@ -6,7 +6,7 @@
  */
 #include "CrossPthreadRWLock.h"
 
-#ifndef LINUX
+#ifdef LINUX
 
 CrossPthreadRWLock::CrossPthreadRWLock()
 {

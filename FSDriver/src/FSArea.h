@@ -15,6 +15,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+
 #define DISKS_CONFIG_FILE "./.disks.conf"
 #define BLOCK_SIZE 4
 

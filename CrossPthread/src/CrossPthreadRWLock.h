@@ -10,7 +10,7 @@
 
 #include <pthread.h>
 
-#ifndef LINUX
+#ifdef LINUX
 
 class CrossPthreadRWLock
 {
