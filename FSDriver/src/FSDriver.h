@@ -10,8 +10,30 @@
 
 
 #include "FSArea.h"
-/**/
+#include <iostream>
+#include <vector>
+using namespace std;
 
+class FSDriver  //reload virtual class FSDriver
+{
+private:
+	int _areaCount;
+	vector<FSArea> _areaList;
+
+public:
+	FSDriver();
+	~FSDriver();
+	void* GetBlock(int fsId, int BlockNum);
+	void SetBlock(int fsId, int BlockNum, void* value);
+};
+
+#endif /* FSDRIVER_H_ */
+
+
+
+
+/**/
+/*
 template<typename T>
 class Singleton
 {
@@ -32,20 +54,4 @@ public:
     void operator=(T* t);
 };
 
-
-
-class FSDriver  //reload virtual class FSDriver
-{
-private:
-	int _areaCount;
-	FSArea* _areaList[];
-
-public:
-	FSDriver();
-	~FSDriver();
-
-	void* GetBlock(int fsId, int BlockNum);
-	void SetBlock(int fsId, int BlockNum, void* value);
-};
-
-#endif /* FSDRIVER_H_ */
+*/

@@ -4,8 +4,9 @@
  *  Created on: Jul 27, 2011
  *      Author: user
  */
-# include "FSDriver.h"
+#include "FSDriver.h"
 
+/*
 template<typename T>
 T* Singleton<T>::get0() const
 {
@@ -71,11 +72,11 @@ void Singleton<T>::SingletonFill(Singleton<T>& current)
 template<>
 void Singleton<FSDriver>::SingletonFill(Singleton<FSDriver>& current)
 {
-	static FSDriver_imp temp;
+	static FSDriver temp;
 	current = &temp;
 }
 
-FSDriver_imp::FSDriver_imp()
+FSDriver::FSDriver()
 {
 	FILE* configFile = fopen(DISKS_CONFIG_FILE,"r");
 	int disksCount = 0;
@@ -89,18 +90,46 @@ FSDriver_imp::FSDriver_imp()
 	}
 }
 
-FSDriver_imp::~FSDriver_imp()
+FSDriver::~FSDriver()
 {
 }
 
-void* FSDriver_imp::GetBlock(int fsId, int BlockNum)
+void* FSDriver::GetBlock(int fsId, int BlockNum)
 {
 	return this->_areaList[fsId]->GetBlock(BlockNum);
 }
 
-void FSDriver_imp::SetBlock(int fsId, int BlockNum,void* value)
+void FSDriver::SetBlock(int fsId, int BlockNum,void* value)
 {
 	return this->_areaList[fsId]->SetBlock(BlockNum,value);
 }
+*/
 
+FSDriver::FSDriver()
+{
+	FILE* configFile = fopen(DISKS_CONFIG_FILE,"r");
+	fscanf(configFile,"%d",&(this->_areaCount));
+	for (int i=0;i<this->_areaCount;i++)
+	{
+		char* diskPath=NULL;
+		fscanf(configFile,"%s",diskPath);
+		const FSArea temp(diskPath);
+		this->_areaList.push_back(temp);
+	}
+}
+FSDriver::~FSDriver()
+{
+	for (int i =0;i<this->_areaCount;i++)
+	{
+		delete &(this->_areaList[i]);
+	}
+}
+void* FSDriver::GetBlock(int fsId, int BlockNum)
+{
+	return this->_areaList[fsId].GetBlock(BlockNum);
+}
+void FSDriver::SetBlock(int fsId, int BlockNum, void* value)
+{
+	this->_areaList[fsId].SetBlock(BlockNum,value);
+}
 
