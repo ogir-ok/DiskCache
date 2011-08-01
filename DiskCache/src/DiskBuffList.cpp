@@ -23,19 +23,18 @@ DiskBuffList::~DiskBuffList()
 	delete this->rw_lock;
 }
 
-void DiskBuffList::AddToHead(int newFsId, int newFsBlockNum)
+void DiskBuffList::AddToTail(int newFsId, int newFsBlockNum)
 {
 	this->rw_lock->Lock();
 	DiskBuff newElement= new DiskBuff();
 	newElement->fsBlockNum = newFsBlockNum;
 	newElement->FsId=newFsId;
+	if(NULL!=pTail)
+	{
+		pTail->FullNext=newElement
+		newElement->pPrev=pTail;
+		newElement
 
-
-
-}
-
-void DiskBuffList::AddToTail()
-{
 
 }
 

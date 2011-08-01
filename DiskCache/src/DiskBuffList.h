@@ -9,7 +9,9 @@
 #define DISKBUFFLIST_H_
 
 #include "DiskBuff.h"
-#include "CrossPthreadMutex.h"
+
+#include <CrossPthreadMutex.h>
+#include <CrossPthreadRWLock.h>
 
 class DiskBuffList
 {
@@ -21,10 +23,9 @@ private:
 public:
 	DiskBuffList();
 	~DiskBuffList();
-	void AddToHead(DiskBuff el);
-	void AddToTail(DiskBuff el);
+	void AddToTail(int newFsId, int newFsBlockNum);
 	void Delete(DiskBuff * el);
-	DiskBuff* GetHead();
+	DiskBuff* GetHead() ;
 
 };
 
