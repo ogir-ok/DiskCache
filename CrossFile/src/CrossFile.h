@@ -4,10 +4,9 @@
  *  Created on: Jul 29, 2011
  *      Author: user
  */
-#define LINUX
 #ifndef CROSSFILE_H_
 #define CROSSFILE_H_
-#ifdef LINUX
+//#ifdef LINUX
 
 #include <sys/types.h>
 #include <unistd.h>
@@ -24,6 +23,6 @@ public:
 	void* Read(int size);
 	void Write(void* value,int size);
 };
-#endif
+//#endif
 
 #endif /* CROSSFILE_H_ */

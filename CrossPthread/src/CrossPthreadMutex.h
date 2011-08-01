@@ -7,7 +7,7 @@
 #ifndef CROSSPTHREADMUTEX_H_
 #define CROSSPTHREADMUTEX_H_
 
-#ifdef LINUX
+//#ifdef LINUX
 
 #include <pthread.h>
 
@@ -33,6 +33,6 @@ public:
 	void Lock();
 	void Unlock();
 };*/
-#endif
+//#endif
 
 #endif /* CROSSPTHREADMUTEX_H_ */

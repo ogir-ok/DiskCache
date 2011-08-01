@@ -8,6 +8,9 @@
 
 DiskBuffList::DiskBuffList()
 {
+	pHead=NULL;
+	pTail=NULL;
+
 
 }
 

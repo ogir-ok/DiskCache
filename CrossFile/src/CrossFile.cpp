@@ -4,8 +4,9 @@
  *  Created on: Jul 29, 2011
  *      Author: user
  */
-#ifdef LINUX
+
 #include "CrossFile.h"
+//#ifdef LINUX
 CrossFile::CrossFile(char *fileName)
 {
 	this->_fileStreamId=open(fileName,O_RDWR|O_SYNC);
@@ -28,4 +29,4 @@ void CrossFile::Write(void* value,int size)
 {
 	write(this->_fileStreamId,value,size);
 }
-#endif
+//#endif

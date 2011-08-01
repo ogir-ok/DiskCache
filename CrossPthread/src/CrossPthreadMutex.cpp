@@ -6,7 +6,7 @@
  */
 #include "CrossPthreadMutex.h"
 
-#ifdef LINUX
+//#ifdef LINUX
 
 CrossPthreadMutex::CrossPthreadMutex()
 {
@@ -26,4 +26,4 @@ void CrossPthreadMutex::Unlock()
 {
 	pthread_mutex_unlock(&(this->_mutex));
 }
-#endif
+//#endif

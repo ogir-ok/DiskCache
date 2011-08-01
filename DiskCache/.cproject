@@ -31,6 +31,10 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.so.debug.1675827429" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.so.debug">
 								<option id="gnu.cpp.compiler.so.debug.option.optimization.level.1550536045" name="Optimization Level" superClass="gnu.cpp.compiler.so.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.so.debug.option.debugging.level.1485197402" name="Debug Level" superClass="gnu.cpp.compiler.so.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+<<<<<<< HEAD
+=======
+								<option id="gnu.cpp.compiler.option.other.other.2013318722" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -fPIC" valueType="string"/>
+>>>>>>> branch 'master' of git@github.com:ogirOK/DiskCache.git
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1628540543" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.so.debug.436519345" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.so.debug">
@@ -43,12 +47,15 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.so.debug.1073703565" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.so.debug">
 								<option defaultValue="true" id="gnu.cpp.link.so.debug.option.shared.112824416" name="Shared (-shared)" superClass="gnu.cpp.link.so.debug.option.shared" valueType="boolean"/>
+<<<<<<< HEAD
 								<option id="gnu.cpp.link.option.libs.712338534" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="CrossPthread"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.57893575" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossPthread/src"/>
 								</option>
+=======
+>>>>>>> branch 'master' of git@github.com:ogirOK/DiskCache.git
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1917437090" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -139,4 +146,8 @@
 	<storageModule moduleId="refreshScope" versionNumber="1">
 		<resource resourceType="PROJECT" workspacePath="/DiskCache"/>
 	</storageModule>
+<<<<<<< HEAD
+=======
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+>>>>>>> branch 'master' of git@github.com:ogirOK/DiskCache.git
 </cproject>
