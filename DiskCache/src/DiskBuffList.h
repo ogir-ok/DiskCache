@@ -12,6 +12,7 @@
 #include <CrossPthreadMutex.h>
 #include <CrossPthreadRWLock.h>
 #include <FSDriver.h>
+#include <stdlib.h>
 
 class DiskBuffList
 {

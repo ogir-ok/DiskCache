@@ -25,7 +25,7 @@ DiskBuffList::~DiskBuffList()
 
 void DiskBuffList::AddToTail(int newFsId, int newFsBlockNum)
 {
-	this->rw_lock->Lock();
+	/*this->rw_lock->Lock();
 	DiskBuff newElement= new DiskBuff();
 	newElement->fsBlockNum = newFsBlockNum;
 	newElement->FsId=newFsId;
@@ -34,7 +34,7 @@ void DiskBuffList::AddToTail(int newFsId, int newFsBlockNum)
 		pTail->FullNext=newElement
 		newElement->pPrev=pTail;
 		newElement
-
+*/
 
 }
 
@@ -43,10 +43,10 @@ void DiskBuffList::Delete(DiskBuff * el)
 
 }
 
-DiskBuff* DiskBuffList::GetHead()
+/*DiskBuff* DiskBuffList::GetHead()
 {
 
-}
+}*/
 
 
 

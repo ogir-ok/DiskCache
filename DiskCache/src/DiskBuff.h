@@ -10,6 +10,7 @@
 
 class DiskBuff
 {
+	public:
 	int fsId;
 	int fsBlockNum;
 	void* pData;

@@ -26,39 +26,43 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.cross.so.debug.1881713804." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.base.2111768724" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.target.gnu.platform.base.1262882476" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
-							<builder buildPath="${workspace_loc:/DiskCache/Debug}" id="cdt.managedbuild.target.gnu.builder.base.2088914549" name="Gnu Make Builder.Debug" superClass="cdt.managedbuild.target.gnu.builder.base"/>
+							<builder buildPath="${workspace_loc:/DiskCache/Debug}" id="cdt.managedbuild.target.gnu.builder.base.2088914549" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.base.860794790" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.1697243059" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
-								<option id="gnu.cpp.compiler.option.optimization.level.1845265220" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.option.debugging.level.1863651217" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.option.include.paths.1130696754" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+								<option id="gnu.cpp.compiler.option.optimization.level.1845265220" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.debugging.level.1863651217" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.1130696754" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossPthread/src"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossFile/src"/>
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/FSDriver/src"/>
 								</option>
+								<option id="gnu.cpp.compiler.option.other.pic.727873633" name="Position Independent Code (-fPIC)" superClass="gnu.cpp.compiler.option.other.pic" value="true" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2049452509" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.1431283742" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
-								<option id="gnu.c.compiler.option.include.paths.1394971071" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+								<option id="gnu.c.compiler.option.include.paths.1394971071" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossPthread/src"/>
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/FSDriver/src"/>
 								</option>
-								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1829542845" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
-								<option id="gnu.c.compiler.option.debugging.level.1796457940" superClass="gnu.c.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1829542845" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.level.1796457940" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.132556229" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.975057753" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base">
-								<option defaultValue="true" id="gnu.c.link.option.shared.13997328" superClass="gnu.c.link.option.shared" valueType="boolean"/>
+								<option defaultValue="true" id="gnu.c.link.option.shared.13997328" name="Shared (-shared)" superClass="gnu.c.link.option.shared" valueType="boolean"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.1939827605" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base">
-								<option id="gnu.cpp.link.option.libs.1069052323" superClass="gnu.cpp.link.option.libs" valueType="libs">
+								<option id="gnu.cpp.link.option.libs.1069052323" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="FSDriver"/>
+									<listOptionValue builtIn="false" value="CrossFile"/>
 									<listOptionValue builtIn="false" value="CrossPthread"/>
 								</option>
-								<option id="gnu.cpp.link.option.paths.433987214" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+								<option id="gnu.cpp.link.option.paths.433987214" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossPthread/Debug/"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossFile/Debug"/>
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/FSDriver/Debug"/>
 								</option>
-								<option defaultValue="true" id="gnu.cpp.link.option.shared.2033487982" superClass="gnu.cpp.link.option.shared" valueType="boolean"/>
+								<option defaultValue="true" id="gnu.cpp.link.option.shared.2033487982" name="Shared (-shared)" superClass="gnu.cpp.link.option.shared" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.37191475" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -141,10 +145,10 @@
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.so.debug.1881713804;cdt.managedbuild.config.gnu.cross.so.debug.1881713804.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.2040169283;cdt.managedbuild.tool.gnu.cpp.compiler.input.1738492665">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.so.debug.1881713804;cdt.managedbuild.config.gnu.cross.so.debug.1881713804.;cdt.managedbuild.tool.gnu.c.compiler.base.1431283742;cdt.managedbuild.tool.gnu.c.compiler.input.132556229">
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.so.release.1869005701;cdt.managedbuild.config.gnu.cross.so.release.1869005701.;cdt.managedbuild.tool.gnu.cross.c.compiler.2134229757;cdt.managedbuild.tool.gnu.c.compiler.input.2072316969">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.so.release.1869005701;cdt.managedbuild.config.gnu.cross.so.release.1869005701.;cdt.managedbuild.tool.gnu.cross.c.compiler.2134229757;cdt.managedbuild.tool.gnu.c.compiler.input.2072316969">
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.so.debug.1881713804;cdt.managedbuild.config.gnu.cross.so.debug.1881713804.;cdt.managedbuild.tool.gnu.c.compiler.base.1431283742;cdt.managedbuild.tool.gnu.c.compiler.input.132556229">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.so.debug.1881713804;cdt.managedbuild.config.gnu.cross.so.debug.1881713804.;cdt.managedbuild.tool.gnu.cpp.compiler.base.1697243059;cdt.managedbuild.tool.gnu.cpp.compiler.input.2049452509">
