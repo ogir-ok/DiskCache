@@ -10,7 +10,7 @@
 
 #include <pthread.h>
 
-#ifdef LINUX
+//#ifdef LINUX
 
 class CrossPthreadRWLock
 {
@@ -24,20 +24,6 @@ public:
 	void Unlock();
 };
 
-#elif WINDOWS
-
-class CrossPthreadRWLock
-{
-private:
-	pthread_rwlock_t _rwlock;
-public:
-	CrossPthreadRWLock();
-	~CrossPthreadRWLock();
-	void WrLock();
-	void RdLock();
-	void Unlock();
-};
-
-#endif
+//#endif
 
 #endif /* CROSSPTHREADRWLOCK_H_ */
