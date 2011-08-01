@@ -8,19 +8,26 @@
 
 DiskBuffList::DiskBuffList()
 {
-	pHead=NULL;
-	pTail=NULL;
-
+	this->pHead=NULL;
+	this->pTail=NULL;
+	this->rw_lock = new CrossPthreadRWLock();
+	this->countElem_lock= new CrossPthreadMutex();
 
 }
 
 DiskBuffList::~DiskBuffList()
 {
-
+	delete this->pHead;
+	delete this->pTail;
+	delete this->countElem_lock;
+	delete this->rw_lock;
 }
 
 void DiskBuffList::AddToHead(DiskBuff el)
 {
+	this->rw_lock->Lock();
+	DiskBuff newElement= new DiskBuff();
+
 
 }
 
