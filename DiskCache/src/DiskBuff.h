@@ -17,6 +17,8 @@ class DiskBuff
 	DiskBuff* FreePrev;
 	DiskBuff* FullNext;
 	DiskBuff* FullPrev;
+	DiskBuff();
+	~DiskBuff();
 };
 
 
