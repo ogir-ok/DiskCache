@@ -11,10 +11,14 @@
 #include <FSArea.h>
 #include <CrossPthreadMutex.h>
 #include <CrossPthreadRWLock.h>
-#include <DiskBuffHashTable.h>
+#include "DiskBuffHashTable.h"
+#include "DiskBuffList.h"
 
 class DiscCache
 {
+private:
+	DiskBuffHashTable* _diskBuffHashTable;
+	DiskBuffList* _diskBuffFreeList;
 public:
 	DiscCache();
 	~DiscCache();
