@@ -15,10 +15,12 @@ DiskBuff::DiskBuff()
 	this->pFullNext = NULL;
 	this->pFullPrev = NULL;
 	this->state=DISK_BLOCK_NOT_CHANGED;
+	this->stateLock = new CrossPthreadMutex();
 }
 DiskBuff::~DiskBuff()
 {
 	delete this->pData;
+	delete this->stateLock;
 }
 
 
