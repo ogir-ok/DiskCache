@@ -8,45 +8,81 @@
 
 DiskBuffList::DiskBuffList()
 {
-	this->pHead=NULL;
-	this->pTail=NULL;
-	this->rw_lock = new CrossPthreadRWLock();
-	this->countElem_lock= new CrossPthreadMutex();
+	this->_pHead=NULL;
+	this->_pTail=NULL;
+	this->_rwlock = new CrossPthreadRWLock();
+	this->_countElemLock= new CrossPthreadMutex();
+	this->_countElem=0;
 
 }
 
 DiskBuffList::~DiskBuffList()
 {
-	delete this->pHead;
-	delete this->pTail;
-	delete this->countElem_lock;
-	delete this->rw_lock;
+	delete this->_pHead;
+	delete this->_pTail;
+	delete this->_countElemLock;
+	delete this->_rwlock;
 }
 
-void DiskBuffList::AddToTail(int newFsId, int newFsBlockNum)
+void DiskBuffList::AddToTail(DiskBuff* addBuff)
 {
-	/*this->rw_lock->Lock();
-	DiskBuff newElement= new DiskBuff();
-	newElement->fsBlockNum = newFsBlockNum;
-	newElement->FsId=newFsId;
-	if(NULL!=pTail)
+	this->_rwlock->WrLock();
+	DiskBuff* newElement = addBuff;
+	newElement->pFreeNext=NULL;
+	newElement->pFreePrev = this->_pTail;
+	if (NULL != this->_pTail)
 	{
-		pTail->FullNext=newElement
-		newElement->pPrev=pTail;
-		newElement
-*/
+		_pTail->pFreePrev=newElement;
+	}
+	this->_pTail=newElement;
+	if (NULL == this-> _pHead)
+	{
+		this->_pHead=newElement;
+	}
+	this->_countElemLock->Unlock();
+	this->_countElemLock->Lock();
+	_countElem++;
+	this->_countElemLock->Unlock();
+}
+
+void DiskBuffList::Delete(DiskBuff * currentElement)
+{
+	this->_rwlock->WrLock();
+	if (NULL!=currentElement)
+	{
+		if (this->_pHead == currentElement)
+		{
+			this->_pHead = currentElement->pFreeNext;
+			delete currentElement;
+		}
+		else
+		if (this->_pTail == currentElement)
+		{
+			this->_pTail = currentElement->pFreePrev;
+			delete currentElement;
+		}
+		else
+		{
+			currentElement->pFreeNext->pFreePrev=currentElement->pFreePrev;
+			currentElement->pFreePrev->pFreeNext=currentElement->pFreeNext;
+			this->_countElemLock->Lock();
+				_countElem--;
+			this->_countElemLock->Unlock();
+			delete currentElement;
+		}
+	}
+	this->_countElemLock->Unlock();
 
 }
 
-void DiskBuffList::Delete(DiskBuff * el)
+DiskBuff* DiskBuffList::GetHead()
 {
-
+	DiskBuff *temp=NULL;
+	this->_rwlock->RdLock();
+	  	temp=this->_pHead;
+    this->_rwlock->Unlock();
+    return temp;
 }
-
-/*DiskBuff* DiskBuffList::GetHead()
-{
-
-}*/
 
 
 

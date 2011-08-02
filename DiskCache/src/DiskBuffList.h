@@ -17,14 +17,15 @@
 class DiskBuffList
 {
 private:
-	DiskBuff* pHead;
-	DiskBuff* pTail;
-	CrossPthreadRWLock* rw_lock; 			//lock class
-	CrossPthreadMutex* countElem_lock;	//mutex for variable countelement
+	DiskBuff* _pHead;
+	DiskBuff* _pTail;
+	CrossPthreadRWLock* _rwlock; 			//lock class
+	CrossPthreadMutex* 	_countElemLock;	//mutex for variable countelement
+	int _countElem;
 public:
 	DiskBuffList();
 	~DiskBuffList();
-	void AddToTail(int newFsId, int newFsBlockNum);
+	void AddToTail(DiskBuff* addBuff);
 	void Delete(DiskBuff * el);
 	DiskBuff* GetHead() ;
 

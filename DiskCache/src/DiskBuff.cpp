@@ -10,10 +10,10 @@
 
 DiskBuff::DiskBuff()
 {
-	this->FreeNext = NULL;
-	this->FreePrev = NULL;
-	this->FullNext = NULL;
-	this->FullPrev = NULL;
+	this->pFreeNext = NULL;
+	this->pFreePrev = NULL;
+	this->pFullNext = NULL;
+	this->pFullPrev = NULL;
 }
 DiskBuff::~DiskBuff()
 {

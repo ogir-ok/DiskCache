@@ -14,10 +14,10 @@ class DiskBuff
 	int fsId;
 	int fsBlockNum;
 	void* pData;
-	DiskBuff* FreeNext;
-	DiskBuff* FreePrev;
-	DiskBuff* FullNext;
-	DiskBuff* FullPrev;
+	DiskBuff* pFreeNext;
+	DiskBuff* pFreePrev;
+	DiskBuff* pFullNext;
+	DiskBuff* pFullPrev;
 	DiskBuff();
 	~DiskBuff();
 };
