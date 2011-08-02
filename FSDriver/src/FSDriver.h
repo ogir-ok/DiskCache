@@ -26,11 +26,6 @@ public:
 	void SetBlock(int fsId, int BlockNum, void* value);
 };
 
-#endif /* FSDRIVER_H_ */
-
-
-
-
 template<typename T>
 class Singleton
 {
@@ -50,3 +45,5 @@ public:
     const T* operator->() const;
     void operator=(T* t);
 };
+
+#endif /* FSDRIVER_H_ */

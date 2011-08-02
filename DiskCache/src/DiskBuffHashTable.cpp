@@ -35,6 +35,8 @@ void DiskBuffHashTable:: Del(DiskBuff* buff)
 DiskBuff* DiskBuffHashTable::Get(int fsId,int blockNum)
 {
 	this->_lock.RdLock();
-	this->_hash[blockNum%HASH_SIZE].Get(fsId,blockNum);
+	DiskBuff* temp;
+	temp = this->_hash[blockNum%HASH_SIZE].Get(fsId,blockNum);
 	this->_lock.Unlock();
+	return temp;
 }

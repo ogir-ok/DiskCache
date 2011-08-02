@@ -43,6 +43,7 @@ void* DiskCache::read(int fsId, int pos, int len)
 	}
 	else
 	{
+
 		this->_diskBuffFreeList->Delete(ans);
 	}
 	void *temp=NULL;
@@ -51,6 +52,7 @@ void* DiskCache::read(int fsId, int pos, int len)
 	this->_mutex->Unlock();
 	return temp;
 }
+
 void* DiskCache::write(int fsId, int pos, int len, void* value)
 {
 	//num block
@@ -82,5 +84,3 @@ void* DiskCache::write(int fsId, int pos, int len, void* value)
 	this->_mutex->Unlock();
 	return temp;
 }
-
-
