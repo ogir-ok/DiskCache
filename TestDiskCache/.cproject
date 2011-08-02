@@ -25,6 +25,14 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.629207940" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug">
 								<option id="gnu.cpp.compiler.exe.debug.option.optimization.level.2119925113" name="Optimization Level" superClass="gnu.cpp.compiler.exe.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.exe.debug.option.debugging.level.2060323330" name="Debug Level" superClass="gnu.cpp.compiler.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.911357107" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/DiskCache/src"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossFile/src"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossPthread/src"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/FSDriver/src"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.other.pic.1963753273" name="Position Independent Code (-fPIC)" superClass="gnu.cpp.compiler.option.other.pic" value="true" valueType="boolean"/>
+								<option id="gnu.cpp.compiler.option.other.other.1334234940" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -pthread " valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1785162904" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.833213761" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug">
@@ -34,6 +42,19 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.182268831" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.1450094987" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
+								<option id="gnu.cpp.link.option.paths.1716004687" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossFile/Debug"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossPthread/Debug"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/FSDriver/Debug"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/DiskCache/Debug"/>
+								</option>
+								<option id="gnu.cpp.link.option.libs.1027269559" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="pthread"/>
+									<listOptionValue builtIn="false" value="CrossPthread"/>
+									<listOptionValue builtIn="false" value="FSDriver"/>
+									<listOptionValue builtIn="false" value="CrossFile"/>
+									<listOptionValue builtIn="false" value="DiskCache"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.151491899" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -118,4 +139,5 @@
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
 		</scannerConfigBuildInfo>
 	</storageModule>
+	<storageModule moduleId="refreshScope"/>
 </cproject>

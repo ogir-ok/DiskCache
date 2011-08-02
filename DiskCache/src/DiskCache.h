@@ -19,7 +19,7 @@ class DiskCache
 private:
 	DiskBuffHashTable* _diskBuffHashTable;
 	DiskBuffList* _diskBuffFreeList;
-	FSDriver* _fsDriver;
+	Singleton<FSDriver> _fsDriver;
 	CrossPthreadMutex* _mutex;
 public:
 	DiskCache();

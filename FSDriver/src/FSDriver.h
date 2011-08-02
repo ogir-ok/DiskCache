@@ -27,7 +27,7 @@ public:
 };
 
 template<typename T>
-class Singleton
+struct Singleton
 {
 private:
     T* get0() const;

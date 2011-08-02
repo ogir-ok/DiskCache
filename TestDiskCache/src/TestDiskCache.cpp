@@ -7,9 +7,10 @@
 //============================================================================
 
 #include <iostream>
-using namespace std;
-
-int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+//include <pthread.h>
+//#include <DiskCache.h>
+//DiskCache* cache = new DiskCache();
+int main()
+{
 	return 0;
 }
