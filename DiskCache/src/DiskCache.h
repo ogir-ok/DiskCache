@@ -8,22 +8,24 @@
 #ifndef DISKCACHE_H_
 #define DISKCACHE_H_
 
-#include <FSArea.h>
+#include <FSDriver.h>
 #include <CrossPthreadMutex.h>
 #include <CrossPthreadRWLock.h>
 #include "DiskBuffHashTable.h"
 #include "DiskBuffList.h"
 
-class DiscCache
+class DiskCache
 {
 private:
 	DiskBuffHashTable* _diskBuffHashTable;
 	DiskBuffList* _diskBuffFreeList;
+	FSDriver* _fsDriver;
+	CrossPthreadMutex* _mutex;
 public:
-	DiscCache();
-	~DiscCache();
+	DiskCache();
+	~DiskCache();
 	void* read(int fsId, int pos, int len);
-	void* write();
+	void* write(int fsId, int pos, int len, void* value);
 };
 
 
