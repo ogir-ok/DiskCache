@@ -7,29 +7,39 @@
 
 #include "DiskCache.h"
 
-DiscCache::DiscCache()
+DiskCache::DiskCache()
 {
 	_diskBuffHashTable = new DiskBuffHashTable();
-	_diskBuffFreeList = new DiskBuffList() ;
+	_diskBuffFreeList = new DiskBuffList();
+	_fsDriver = new FSDriver();
 }
-DiscCache::~DiscCache()
+DiskCache::~DiskCache()
 {
 }
-void* DiscCache::read(int fsId, int pos, int len)
+void* DiskCache::read(int fsId, int pos, int len)
 {
 	//num block
 	int block = (pos % BLOCK_SIZE);
-	/*DiskBuff* ans =	_diskBuffHashTable->Get(fsId,block);
+	DiskBuff* ans =	 this->_diskBuffHashTable->Get(fsId,block);
 	if(NULL==ans)
 	{
+		ans = this->_diskBuffFreeList->GetHead();
+		this->_diskBuffFreeList->Delete(ans);
+		if(DISK_BLOCK_CHANGED==ans->state)
+		{
+			_fsDriver->SetBlock(fsId,block, ans->pData);
+		}
+		ans->pData = _fsDriver->GetBlock(fsId, block);
 
 	}
 	else
 	{
 
-	}*/
-	//return NULL;
+	}
+
 }
-void* DiscCache::write()
+void* DiskCache::write()
 {
 }
+
+

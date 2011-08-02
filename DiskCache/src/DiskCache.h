@@ -14,14 +14,15 @@
 #include "DiskBuffHashTable.h"
 #include "DiskBuffList.h"
 
-class DiscCache
+class DiskCache
 {
 private:
 	DiskBuffHashTable* _diskBuffHashTable;
 	DiskBuffList* _diskBuffFreeList;
+	FSDriver* _fsDriver;
 public:
-	DiscCache();
-	~DiscCache();
+	DiskCache();
+	~DiskCache();
 	void* read(int fsId, int pos, int len);
 	void* write();
 };
