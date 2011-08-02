@@ -59,6 +59,7 @@ void* DiskCache::write(int fsId, int pos, int len, void* value)
 	this->_mutex->Lock();
 	int block = (pos % BLOCK_SIZE);
 	DiskBuff* ans =	 this->_diskBuffHashTable->Get(fsId,block);
+	ans->pData=value;
 	if(NULL==ans)
 	{
 		do
@@ -70,7 +71,6 @@ void* DiskCache::write(int fsId, int pos, int len, void* value)
 		{
 			this->_fsDriver->SetBlock(fsId,block, ans->pData);
 		}
-		ans->pData = this->_fsDriver->GetBlock(fsId, block);
 		this->_diskBuffHashTable->Add(ans);
 	}
 	else
