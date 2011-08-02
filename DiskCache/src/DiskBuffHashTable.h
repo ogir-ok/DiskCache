@@ -4,7 +4,7 @@
  *  Created on: Aug 1, 2011
  *      Author: user
  */
-#define HASH_COUNT 10
+#define HASH_SIZE 10
 
 #ifndef DISKBUFFHASHTABLE_H_
 #define DISKBUFFHASHTABLE_H_
