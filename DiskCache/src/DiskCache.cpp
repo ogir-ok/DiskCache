@@ -6,7 +6,7 @@
  */
 
 #include "DiskCache.h"
-
+/*
 DiscCache::DiscCache()
 {
 	_diskBuffHashTable = new DiskBuffHashTable();
@@ -19,7 +19,7 @@ void* DiscCache::read(int fsId, int pos, int len)
 {
 	//num block
 	int block = (pos % BLOCK_SIZE);
-	/*DiskBuff* ans =	_diskBuffHashTable->Get(fsId,block);
+	DiskBuff* ans =	_diskBuffHashTable->Get(fsId,block);
 	if(NULL==ans)
 	{
 
@@ -29,7 +29,10 @@ void* DiscCache::read(int fsId, int pos, int len)
 
 	}*/
 	//return NULL;
+
+/*
 }
 void* DiscCache::write()
 {
 }
+*/
