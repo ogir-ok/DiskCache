@@ -19,11 +19,10 @@ private:
 	int _areaCount;
 	vector<FSArea> _areaList;
 	static FSDriver* _pInstance;
-	static FSDriver* Instance();
-protected:
-	FSDriver(char* DiskConfigFile);
+	FSDriver (char* DiskConfigFile);
 public:
 	static void Create(char* DiskConfigFile);
+	static FSDriver* Inst();
 	FSDriver* operator->();
 	~FSDriver();
 	void* GetBlock(int fsId, int BlockNum);

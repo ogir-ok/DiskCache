@@ -17,6 +17,14 @@ FSDriver* FSDriver::operator->()
 {
 	return _pInstance;
 }
+FSDriver* FSDriver::Inst()
+{
+	if(NULL==_pInstance)
+	{
+		Create("/home/user/workspace/cpp/DiskCache/.disk.conf");
+	}
+	return _pInstance;
+}
 
 FSDriver::FSDriver(char* DiskConfigFile)
 {
