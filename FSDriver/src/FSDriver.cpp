@@ -6,78 +6,21 @@
  */
 #include "FSDriver.h"
 
-template<typename T>
-T* Singleton<T>::get0() const
+FSDriver* FSDriver::_pInstance = NULL;
+
+void FSDriver::Create(char* DiskConfigFile)
 {
-    const_cast<Singleton<T>*>(this)->init();
-    return this->_data;
+	_pInstance= new FSDriver(DiskConfigFile);
 }
 
-template<typename T>
-Singleton<T>::Singleton()
+FSDriver* FSDriver::operator->()
 {
-	clear();
+	return _pInstance;
 }
 
-template<typename T>
-T* Singleton<T>::operator->()
+FSDriver::FSDriver(char* DiskConfigFile)
 {
-	return get0();
-}
-
-template<typename T>
-const T* Singleton<T>::operator->() const
-{
-	return get0();
-}
-
-template<typename T>
-void Singleton<T>::operator=(T* t)
-{
-	this->_data = t;
-}
-
-template<typename T>
-bool Singleton<T>::isEmpty() const
-{
-	return this->_data == 0;
-}
-
-template<typename T>
-void Singleton<T>::clear()
-{
-	this->_data = 0;
-}
-
-template<typename T>
-void Singleton<T>::init()
-{
-	if (this->isEmpty())
-		this->reinit();
-}
-
-template<typename T>
-void Singleton<T>::reinit()
-{
-	this->SingletonFill(*this);
-}
-
-template<typename T>
-void Singleton<T>::SingletonFill(Singleton<T>& current)
-{
-	//
-}
-
-template<>
-void Singleton<FSDriver>::SingletonFill(Singleton<FSDriver>& current)
-{
-	static FSDriver temp;
-	current = &temp;
-}
-
-FSDriver::FSDriver()
-{
-	FILE* configFile = fopen(DISKS_CONFIG_FILE,"r");
+	FILE* configFile = fopen(DiskConfigFile,"r");
 	fscanf(configFile,"%d",&(this->_areaCount));
 	for (int i=0;i<this->_areaCount;i++)
 	{

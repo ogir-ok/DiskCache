@@ -18,32 +18,17 @@ class FSDriver  //reload virtual class FSDriver
 private:
 	int _areaCount;
 	vector<FSArea> _areaList;
-
+	static FSDriver* _pInstance;
+	static FSDriver* Instance();
+protected:
+	FSDriver(char* DiskConfigFile);
 public:
-	FSDriver();
+	static void Create(char* DiskConfigFile);
+	FSDriver* operator->();
+	FSDriver* operator->() const;
 	~FSDriver();
 	void* GetBlock(int fsId, int BlockNum);
 	void SetBlock(int fsId, int BlockNum, void* value);
-};
-
-template<typename T>
-struct Singleton
-{
-private:
-    T* get0() const;
-    static T* _data;
-    bool isEmpty() const;
-    void clear();
-    void init();
-    void reinit();
-    void SingletonFill(Singleton<T>& current);
-
-public:
-	Singleton();
-
-    T* operator->();
-    const T* operator->() const;
-    void operator=(T* t);
 };
 
 #endif /* FSDRIVER_H_ */
