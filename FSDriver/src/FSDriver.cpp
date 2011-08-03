@@ -22,7 +22,7 @@ FSDriver* FSDriver::Instance()
 {
 	if(NULL==_pInstance)
 	{
-		Create(DISK_CONF_FILE);
+		Create(DEFAULT_DISK_CONF_FILE);
 	}
 	return _pInstance;
 }

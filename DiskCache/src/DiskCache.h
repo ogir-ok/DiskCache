@@ -5,10 +5,6 @@
  *      Author: user
  */
 
-
-//#define DISK_CONF_FILE "/home/user/workspace/cpp/DiskCache/.disk.conf"
-#define DISK_CONF_FILE "/home/user/workspace/cpp/DiskCache/.disk.conf"
-
 #ifndef DISKCACHE_H_
 #define DISKCACHE_H_
 

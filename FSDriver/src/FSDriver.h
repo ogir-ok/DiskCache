@@ -11,7 +11,7 @@
 #define FSDRIVER_H_
 
 
-#define DISK_CONF_FILE "/home/user/workspace/cpp/DiskCache/.disk.conf"
+#define DEFAULT_DISK_CONF_FILE "/home/user/workspace/cpp/DiskCache/.disk.conf"
 
 #include "FSArea.h"
 #include <iostream>
