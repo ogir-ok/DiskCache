@@ -6,12 +6,11 @@
  */
 
 #include "DiskCache.h"
-
-DiskCache::DiskCache()
+DiskCache::DiskCache(char* DiskConfigFile)
 {
 	this->_diskBuffHashTable = new DiskBuffHashTable();
 	this->_diskBuffFreeList = new DiskBuffList();
-	this->_fsDriver = new FSDriver();
+	FSDriver::Create(DiskConfigFile);
 	this->_mutex= new CrossPthreadMutex();
 }
 DiskCache::~DiskCache()
@@ -35,9 +34,9 @@ void* DiskCache::read(int fsId, int pos, int len)
 		this->_diskBuffFreeList->Delete(ans);
 		if(DISK_BLOCK_CHANGED==ans->state)
 		{
-			this->_fsDriver->SetBlock(fsId,block, ans->pData);
+			 FSDriver::Instance()->SetBlock(fsId,block, ans->pData);
 		}
-		ans->pData = this->_fsDriver->GetBlock(fsId, block);
+		ans->pData = FSDriver::Instance()->GetBlock(fsId, block);
 		this->_diskBuffHashTable->Add(ans);
 	}
 	else
@@ -68,7 +67,7 @@ void* DiskCache::write(int fsId, int pos, int len, void* value)
 		this->_diskBuffFreeList->Delete(ans);
 		if(DISK_BLOCK_CHANGED==ans->state)
 		{
-			this->_fsDriver->SetBlock(fsId,block, ans->pData);
+			 FSDriver::Instance()->SetBlock(fsId,block, ans->pData);
 		}
 		this->_diskBuffHashTable->Add(ans);
 	}

@@ -5,14 +5,19 @@
  *      Author: user
  */
 
+
+
 #ifndef FSDRIVER_H_
 #define FSDRIVER_H_
 
+
+#define DISK_CONF_FILE "/home/user/workspace/cpp/DiskCache/.disk.conf"
 
 #include "FSArea.h"
 #include <iostream>
 #include <vector>
 using namespace std;
+
 class FSDriver  //reload virtual class FSDriver
 {
 private:
@@ -21,9 +26,10 @@ private:
 	static FSDriver* _pInstance;
 	FSDriver (char* DiskConfigFile);
 public:
+	FSDriver();
 	static void Create(char* DiskConfigFile);
-	static FSDriver* Inst();
-	FSDriver* operator->();
+	static FSDriver* Instance();
+//	FSDriver* operator->();
 	~FSDriver();
 	void* GetBlock(int fsId, int BlockNum);
 	void SetBlock(int fsId, int BlockNum, void* value);

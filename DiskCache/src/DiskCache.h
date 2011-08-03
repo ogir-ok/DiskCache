@@ -5,6 +5,10 @@
  *      Author: user
  */
 
+
+//#define DISK_CONF_FILE "/home/user/workspace/cpp/DiskCache/.disk.conf"
+#define DISK_CONF_FILE "/home/user/workspace/cpp/DiskCache/.disk.conf"
+
 #ifndef DISKCACHE_H_
 #define DISKCACHE_H_
 
@@ -19,10 +23,10 @@ class DiskCache
 private:
 	DiskBuffHashTable* _diskBuffHashTable;
 	DiskBuffList* _diskBuffFreeList;
-	Singleton<FSDriver> _fsDriver;
+	FSDriver _fsDriver;
 	CrossPthreadMutex* _mutex;
 public:
-	DiskCache();
+	DiskCache(char* DiskConfigFile);
 	~DiskCache();
 	void* read(int fsId, int pos, int len);
 	void* write(int fsId, int pos, int len, void* value);

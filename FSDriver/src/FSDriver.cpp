@@ -13,17 +13,21 @@ void FSDriver::Create(char* DiskConfigFile)
 	_pInstance= new FSDriver(DiskConfigFile);
 }
 
-FSDriver* FSDriver::operator->()
+/*FSDriver* FSDriver::operator->()
 {
 	return _pInstance;
 }
-FSDriver* FSDriver::Inst()
+*/
+FSDriver* FSDriver::Instance()
 {
 	if(NULL==_pInstance)
 	{
-		Create("/home/user/workspace/cpp/DiskCache/.disk.conf");
+		Create(DISK_CONF_FILE);
 	}
 	return _pInstance;
+}
+FSDriver::FSDriver()
+{
 }
 
 FSDriver::FSDriver(char* DiskConfigFile)
