@@ -25,7 +25,6 @@ protected:
 public:
 	static void Create(char* DiskConfigFile);
 	FSDriver* operator->();
-	FSDriver* operator->() const;
 	~FSDriver();
 	void* GetBlock(int fsId, int BlockNum);
 	void SetBlock(int fsId, int BlockNum, void* value);
