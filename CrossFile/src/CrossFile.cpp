@@ -21,9 +21,15 @@ void CrossFile::Lseek(int offset)
 }
 char* CrossFile::Read(int size)
 {
-	char* temp;
-	read(this->_fileStreamId,temp,size);
-	return temp;
+	char* temp = (char*)malloc(size * sizeof(char));
+	if (temp == NULL) {
+		perror("malloc");
+	}
+	int ret = read(this->_fileStreamId,temp,size);
+	if (ret == -1) {
+		perror("read");
+	}
+	return (char*)temp;
 }
 void CrossFile::Write(void* value,int size)
 {
