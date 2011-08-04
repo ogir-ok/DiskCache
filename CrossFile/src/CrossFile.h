@@ -20,7 +20,7 @@ public:
 	CrossFile(char *fileName);
 	~CrossFile();
 	void Lseek(int pos);
-	void* Read(int size);
+	char* Read(int size);
 	void Write(void* value,int size);
 };
 //#endif

@@ -22,7 +22,7 @@ class FSDriver  //reload virtual class FSDriver
 {
 private:
 	int _areaCount;
-	vector<FSArea> _areaList;
+	vector<FSArea *> _areaList;
 	static FSDriver* _pInstance;
 	FSDriver (char* DiskConfigFile);
 public:
@@ -31,7 +31,7 @@ public:
 	static FSDriver* Instance();
 //	FSDriver* operator->();
 	~FSDriver();
-	void* GetBlock(int fsId, int BlockNum);
+	char* GetBlock(int fsId, int BlockNum);
 	void SetBlock(int fsId, int BlockNum, void* value);
 };
 

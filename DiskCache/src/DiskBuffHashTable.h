@@ -4,7 +4,7 @@
  *  Created on: Aug 1, 2011
  *      Author: user
  */
-#define HASH_SIZE 4
+#define HASH_SIZE 16
 
 #ifndef DISKBUFFHASHTABLE_H_
 #define DISKBUFFHASHTABLE_H_
@@ -13,7 +13,7 @@
 class DiskBuffHashTable
 {
 private:
-	vector<DiskBuffFullList>  _hash;
+	vector<DiskBuffFullList*>  _hash;
 	CrossPthreadRWLock _lock;
 public:
 	DiskBuffHashTable();

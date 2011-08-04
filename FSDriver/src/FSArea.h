@@ -31,7 +31,7 @@ public:
 	FSArea(char* fileName);
 	FSArea();
 	~FSArea();
-	void* GetBlock(int BlockNum);
+	char* GetBlock(int BlockNum);
 	void SetBlock(int BlockNum,void* value);
 };
 

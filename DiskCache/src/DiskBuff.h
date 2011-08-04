@@ -16,7 +16,7 @@ class DiskBuff
 	public:
 	int fsId;
 	int fsBlockNum;
-	void* pData;
+	char* pData;
 	int state;
 	CrossPthreadMutex* stateLock;
 	DiskBuff* pFreeNext;

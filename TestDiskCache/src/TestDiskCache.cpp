@@ -35,7 +35,7 @@ int main()
 int main()
 {
  	cache = new DiskCache((char*)DISK_CONF_FILE);
-    //cout<<cache->read(1,1,1);
+     printf("%d",cache->read(1,1,1));
 	//printf("1111");
 	return 0;
 }

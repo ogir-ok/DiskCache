@@ -19,9 +19,9 @@ void CrossFile::Lseek(int offset)
 {
 	lseek(this->_fileStreamId,offset,SEEK_SET);
 }
-void* CrossFile::Read(int size)
+char* CrossFile::Read(int size)
 {
-	void* temp;
+	char* temp;
 	read(this->_fileStreamId,temp,size);
 	return temp;
 }

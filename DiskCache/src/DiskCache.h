@@ -8,6 +8,8 @@
 #ifndef DISKCACHE_H_
 #define DISKCACHE_H_
 
+#define MAX_BUFF_COUNT 256
+
 #include <FSDriver.h>
 #include <CrossPthreadMutex.h>
 #include <CrossPthreadRWLock.h>
@@ -21,11 +23,12 @@ private:
 	DiskBuffList* _diskBuffFreeList;
 	FSDriver _fsDriver;
 	CrossPthreadMutex* _mutex;
+	int _buffCount;
 public:
 	DiskCache(char* DiskConfigFile);
 	~DiskCache();
-	void* read(int fsId, int pos, int len);
-	void* write(int fsId, int pos, int len, void* value);
+	char* read(int fsId, int pos, int len);
+	void write(int fsId, int pos, int len, char* value);
 };
 
 
