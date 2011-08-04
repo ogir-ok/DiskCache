@@ -28,23 +28,26 @@ FSDriver* FSDriver::Instance()
 }
 FSDriver::FSDriver()
 {
+	this->_areaCount=0;
+
 }
 
 FSDriver::FSDriver(char* DiskConfigFile)
 {
-	FILE* configFile = fopen(DiskConfigFile,"r");
-	fscanf(configFile,"%d",&(this->_areaCount));
-	for (int i=0;i<this->_areaCount;i++)
+	FILE* configFile = fopen(DiskConfigFile, "r");
+	fscanf(configFile, "%d\n", &(this->_areaCount));
+	//this->_areaList = vector<FSArea>(10);
+	for (int i = 0; i < this->_areaCount; i++)
 	{
-		char* diskPath=NULL;
-		fscanf(configFile,"%s",diskPath);
-		const FSArea temp(diskPath);
-		this->_areaList.push_back(temp);
+		char diskPath[1024];
+		fscanf(configFile, "%s\n", &diskPath);
+		printf("%s", diskPath);
+		this->_areaList.push_back(FSArea(diskPath));
 	}
 }
 FSDriver::~FSDriver()
 {
-	for (int i =0;i<this->_areaCount;i++)
+	for (int i = 0;i < this->_areaCount; i++)
 	{
 		delete &(this->_areaList[i]);
 	}

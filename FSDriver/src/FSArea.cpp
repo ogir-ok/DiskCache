@@ -10,8 +10,8 @@
 
 FSArea::FSArea(char* fileName)
 {
-	(this-> _mutex)= new CrossPthreadMutex();
-	(this->_fileStreamId)=new CrossFile(fileName);
+	this-> _mutex = new CrossPthreadMutex();
+	this->_fileStreamId = new CrossFile(fileName);
 }
 
 FSArea::~FSArea()
@@ -41,3 +41,8 @@ void FSArea::SetBlock(int BlockNum,void* value)
 	this->_mutex->Unlock();
 }
 //
+FSArea::FSArea()
+{
+	this->_mutex = new CrossPthreadMutex();
+	this->_fileStreamId = new CrossFile(NULL);
+}

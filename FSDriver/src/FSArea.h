@@ -29,6 +29,7 @@ private:
 	CrossFile* _fileStreamId;
 public:
 	FSArea(char* fileName);
+	FSArea();
 	~FSArea();
 	void* GetBlock(int BlockNum);
 	void SetBlock(int BlockNum,void* value);

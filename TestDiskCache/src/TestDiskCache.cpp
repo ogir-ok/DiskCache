@@ -7,7 +7,8 @@
 //============================================================================
 
 #define DISK_CONF_FILE "/home/user/workspace/cpp/DiskCache/.disk.conf"
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include <pthread.h>
 #include <DiskCache.h>
 
@@ -33,8 +34,8 @@ int main()
 }*/
 int main()
 {
-	cache = new DiskCache((char*)DISK_CONF_FILE);
-	cache->write();
-	printf("1111");
+ 	cache = new DiskCache((char*)DISK_CONF_FILE);
+    //cout<<cache->read(1,1,1);
+	//printf("1111");
 	return 0;
 }

@@ -10,10 +10,11 @@
 
 DiskBuffHashTable::DiskBuffHashTable()
 {
+	DiskBuffFullList *temp;
 	for (int i = 0; i< HASH_SIZE;i++)
 	{
-		DiskBuffFullList temp;
-		this->_hash.push_back(temp);
+		temp= new DiskBuffFullList();
+		this->_hash.push_back(*temp);
 	}
 }
 DiskBuffHashTable::~DiskBuffHashTable()
