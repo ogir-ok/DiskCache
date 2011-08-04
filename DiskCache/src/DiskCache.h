@@ -27,8 +27,8 @@ private:
 public:
 	DiskCache(char* DiskConfigFile);
 	~DiskCache();
-	char* read(int fsId, int pos, int len);
-	void write(int fsId, int pos, int len, char* value);
+	char* Read(int fsId, int pos, int len);
+	void Write(int fsId, int pos, int len, char* value);
 };
 
 

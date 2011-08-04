@@ -22,7 +22,7 @@ DiskCache::~DiskCache()
 	delete this->_mutex;
 }
 
-char* DiskCache::read(int fsId, int pos, int len)
+char* DiskCache::Read(int fsId, int pos, int len)
 {
 	//num block
 	this->_mutex->Lock();
@@ -62,7 +62,7 @@ char* DiskCache::read(int fsId, int pos, int len)
 	return temp;
 }
 
-void DiskCache::write(int fsId, int pos, int len, char* value)
+void DiskCache::Write(int fsId, int pos, int len, char* value)
 {
 	//num block
 	this->_mutex->Lock();

@@ -7,35 +7,54 @@
 //============================================================================
 
 #define DISK_CONF_FILE "/home/user/workspace/cpp/DiskCache/.disk.conf"
+#define READERS_COUNT 100
+#define FS_COUNT 6
+#define MAX_BLOCK 100;
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
 #include <DiskCache.h>
-
+#include <ctime>
 DiskCache* cache;
 pthread_t* readers;
 pthread_t* writers;
-/*void* f_readers(void* arg)
+pthread_mutex_t rand_mutex;
+pthread_mutex_t console_mutex;
+void* f_readers(void* arg)
 {
+	pthread_mutex_lock(&rand_mutex);
+	srand(time(NULL));
+	int dr = rand()%MAX_BLOCK;
+	int fr = rand()%FS_COUNT;
+	pthread_mutex_unlock(&rand_mutex);
+	char* ret = cache->Read(fr,dr*BLOCK_SIZE,BLOCK_SIZE);
+	pthread_mutex_lock(&console_mutex);
+	printf("%s\n",ret);
+	pthread_mutex_unlock(&console_mutex);
 
+	return (void*)0;
 }
+
 int main()
 {
-	readers = new pthread_t[10];
-	writers = new pthread_t[10];
-	for (int i=0;i< 10;i++)
-	{
-		pthread_create(&readers[i],NULL,f_readers,NULL);
-	}
 	cache = new DiskCache((char*)DISK_CONF_FILE);
-	return 0;
-	delete[] readers;
-	delete[] writers;
-}*/
-int main()
-{
- 	cache = new DiskCache((char*)DISK_CONF_FILE);
-     printf("%d",cache->read(1,1,1));
-	printf("1111");
+	readers=new pthread_t[READERS_COUNT];
+
+ 	for (int i=0;i<READERS_COUNT;i++)
+ 	{
+ 		pthread_create(&(readers[i]),NULL,f_readers,NULL);
+ 	}
+
+ 	for (int i=0;i<READERS_COUNT;i++)
+	{
+		void* tr_ret=NULL;
+		pthread_join(readers[i],&tr_ret);
+	}
+ 	for (int i=0;i<READERS_COUNT;i++)
+ 	{
+ 		void* tr_ret=NULL;
+ 		pthread_de(readers[i],&tr_ret);
+ 	}
+
 	return 0;
 }
