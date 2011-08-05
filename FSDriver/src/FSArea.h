@@ -25,7 +25,7 @@
 class FSArea
 {
 private:
-	CrossPthreadMutex* _mutex;
+	//CrossPthreadMutex* _mutex;
 	CrossFile* _fileStreamId;
 public:
 	FSArea(char* fileName);

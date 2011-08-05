@@ -4,6 +4,7 @@
  *  Created on: Jul 29, 2011
  *      Author: user
  */
+#include <stdio.h>
 #include "CrossPthreadMutex.h"
 
 //#ifdef LINUX
@@ -23,12 +24,14 @@ CrossPthreadMutex::~CrossPthreadMutex()
 
 void CrossPthreadMutex::Lock()
 {
+	printf("try lock %s\n");
 	pthread_mutex_lock(&(this->_mutex));
-
+	printf("ok\n");
 }
 
 void CrossPthreadMutex::Unlock()
 {
+	printf("unlock\n");
 	pthread_mutex_unlock(&(this->_mutex));
 }
 //#endif

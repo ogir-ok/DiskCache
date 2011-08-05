@@ -27,13 +27,15 @@ char* DiskCache::Read(int fsId, int pos, int len)
 {
 	//num block
 	this->_mutex->Lock();
+
 	int block = (pos % BLOCK_SIZE);
 	DiskBuff* ans =	 this->_diskBuffHashTable->Get(fsId,block);
-	if(NULL==ans)
+
+	if(NULL == ans)
 	{
-		if (this->_buffCount<MAX_BUFF_COUNT)
+		if (this->_buffCount < MAX_BUFF_COUNT)
 		{
-			ans=new DiskBuff();
+			ans = new DiskBuff();
 		}
 		else
 		{
@@ -41,10 +43,12 @@ char* DiskCache::Read(int fsId, int pos, int len)
 			{
 				ans = this->_diskBuffFreeList->GetHead();
 			}
-			while(NULL==ans);
+			while(NULL == ans);
+
 			this->_diskBuffHashTable->Del(ans);
 			this->_diskBuffFreeList->Delete(ans);
-			if(DISK_BLOCK_CHANGED==ans->state)
+
+			if(DISK_BLOCK_CHANGED == ans->state)
 			{
 				 FSDriver::Instance()->SetBlock(fsId,block, ans->pData);
 			}
@@ -57,8 +61,10 @@ char* DiskCache::Read(int fsId, int pos, int len)
 		this->_diskBuffFreeList->Delete(ans);
 	}
 	char *temp = NULL;
+
 	temp = ans->pData;
 	this->_diskBuffFreeList->AddToTail(ans);
+
 	this->_mutex->Unlock();
 	return temp;
 }

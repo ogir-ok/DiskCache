@@ -20,8 +20,8 @@ class DiskBuffFullList
 private:
 	DiskBuff* _pHead;
 	DiskBuff* _pTail;
-	CrossPthreadRWLock* _rwlock; 			//lock class
-	CrossPthreadMutex* 	_countElemLock;	//mutex for variable countelement
+	//CrossPthreadRWLock* _rwlock; 			//lock class
+	//CrossPthreadMutex* 	_countElemLock;	//mutex for variable countelement
 	int _countElem;
 public:
 	DiskBuffFullList();

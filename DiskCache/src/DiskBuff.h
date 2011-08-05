@@ -18,7 +18,7 @@ class DiskBuff
 	int fsBlockNum;
 	char* pData;
 	int state;
-	CrossPthreadMutex* stateLock;
+	//CrossPthreadMutex* stateLock;
 	DiskBuff* pFreeNext;
 	DiskBuff* pFreePrev;
 	DiskBuff* pFullNext;
