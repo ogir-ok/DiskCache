@@ -40,7 +40,8 @@ int main()
 {
 	cache = new DiskCache((char*)DISK_CONF_FILE);
 	readers=new pthread_t[READERS_COUNT];
-
+	pthread_mutex_init(&rand_mutex,NULL);
+	pthread_mutex_init(&console_mutex,NULL);
  	for (int i=0;i<READERS_COUNT;i++)
  	{
  		pthread_create(&(readers[i]),NULL,f_readers,NULL);

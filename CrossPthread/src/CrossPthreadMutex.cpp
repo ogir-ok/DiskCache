@@ -10,7 +10,10 @@
 
 CrossPthreadMutex::CrossPthreadMutex()
 {
-	pthread_mutex_init(&(this->_mutex),NULL);
+	pthread_mutexattr_t attr;
+	pthread_mutexattr_init(&attr);
+	pthread_mutexattr_settype(&attr,PTHREAD_MUTEX_ERRORCHECK);
+	pthread_mutex_init(&(this->_mutex),&attr);
 }
 
 CrossPthreadMutex::~CrossPthreadMutex()
