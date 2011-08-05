@@ -23,7 +23,7 @@ public:
 };
 /*
 #elif WINDOWS
-/*class CrossPthreadMutex
+class CrossPthreadMutex
 {
 private:
 	pthread_mutex_t _mutex;

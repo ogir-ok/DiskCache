@@ -27,6 +27,7 @@ private:
 	FSDriver (char* DiskConfigFile);
 public:
 	FSDriver();
+	static void Destroy();
 	static void Create(char* DiskConfigFile);
 	static FSDriver* Instance();
 //	FSDriver* operator->();

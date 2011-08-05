@@ -20,6 +20,7 @@ DiskCache::~DiskCache()
 	delete this->_diskBuffHashTable;
 	delete this->_diskBuffFreeList;
 	delete this->_mutex;
+	FSDriver::Destroy();
 }
 
 char* DiskCache::Read(int fsId, int pos, int len)

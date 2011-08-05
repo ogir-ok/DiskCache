@@ -34,11 +34,16 @@ FSDriver::FSDriver(char* DiskConfigFile)
 	for (int i = 0; i < this->_areaCount; i++)
 	{
 		char diskPath[1024];
-		fscanf(configFile, "%s\n", &diskPath);
+		fscanf(configFile, "%s\n",(char*)diskPath);
 		printf("%s\n", diskPath);
 		FSArea * area = new FSArea(diskPath);
 		this->_areaList.push_back(area);
 	}
+}
+
+void FSDriver::Destroy()
+{
+	delete _pInstance;
 }
 
 FSDriver::~FSDriver()
