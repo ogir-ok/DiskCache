@@ -31,9 +31,25 @@ void* f_readers(void* arg)
 	int fr = rand() % FS_COUNT;
 	pthread_mutex_unlock(&rand_mutex);
 	char* ret = cache->Read(fr, dr * BLOCK_SIZE, BLOCK_SIZE);
-	/*pthread_mutex_lock(&console_mutex);
+	pthread_mutex_lock(&console_mutex);
 	printf("%s\n",ret);
-	pthread_mutex_unlock(&console_mutex);*/
+	pthread_mutex_unlock(&console_mutex);
+
+	return (void*)0;
+}
+void* f_writers(void* arg)
+{
+	pthread_mutex_lock(&rand_mutex);
+	srand(time(NULL));
+	int dr = rand() % MAX_BLOCK;
+	int fr = rand() % FS_COUNT;
+	pthread_mutex_unlock(&rand_mutex);
+	char *a=(char*)malloc(BLOCK_SIZE*sizeof(char));
+	cache->Write(fr, dr * BLOCK_SIZE, BLOCK_SIZE,(char*)a);
+	free(a);
+	pthread_mutex_lock(&console_mutex);
+	printf("writed\n");
+	pthread_mutex_unlock(&console_mutex);
 
 	return (void*)0;
 }
@@ -41,22 +57,40 @@ void* f_readers(void* arg)
 int main()
 {
 	cache = new DiskCache((char*)DISK_CONF_FILE);
-	readers=new pthread_t[READERS_COUNT];
-//	pthread_mutex_init(&rand_mutex,NULL);
+	readers = new pthread_t[READERS_COUNT];
+	writers = new pthread_t[WRITERS_COUNT];
+	pthread_mutex_init(&rand_mutex,NULL);
 	pthread_mutex_init(&console_mutex,NULL);
- 	for (int i=0;i<READERS_COUNT;i++)
+
+	for (int i=0;i<READERS_COUNT;i++)
  	{
  		pthread_create(&readers[i],NULL,f_readers,NULL);
  		printf("thread created\n");
  	}
-	pthread_mutex_destroy(&rand_mutex);
-	pthread_mutex_destroy(&console_mutex);
+
+	for (int i=0;i<WRITERS_COUNT;i++)
+ 	{
+ 		pthread_create(&writers[i],NULL,f_writers,NULL);
+ 		printf("thread created\n");
+ 	}
+
+
  	for (int i=0;i<READERS_COUNT;i++)
 	{
 		void* tr_ret=NULL;
 		pthread_join(readers[i],&tr_ret);
 	}
+
+	for (int i=0;i<READERS_COUNT;i++)
+	{
+		void* tr_ret=NULL;
+		pthread_join(writers[i],&tr_ret);
+	}
+
+ 	delete[] writers;
  	delete[] readers;
  	printf("exit\n");
+ 	pthread_mutex_destroy(&rand_mutex);
+ 	pthread_mutex_destroy(&console_mutex);
 	return 0;
 }
