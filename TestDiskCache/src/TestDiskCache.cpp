@@ -21,6 +21,7 @@ pthread_t* readers;
 pthread_t* writers;
 pthread_mutex_t rand_mutex;
 pthread_mutex_t console_mutex;
+
 void* f_readers(void* arg)
 {
 	pthread_mutex_lock(&rand_mutex);
@@ -32,7 +33,6 @@ void* f_readers(void* arg)
 	pthread_mutex_lock(&console_mutex);
 	printf("%s\n",ret);
 	pthread_mutex_unlock(&console_mutex);
-
 	return (void*)0;
 }
 
