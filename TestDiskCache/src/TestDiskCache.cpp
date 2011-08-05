@@ -8,6 +8,7 @@
 
 #define DISK_CONF_FILE "/home/user/workspace/cpp/DiskCache/.disk.conf"
 #define READERS_COUNT 100
+#define WRITERS_COUNT 100
 #define FS_COUNT 6
 #define MAX_BLOCK 100;
 #include <stdio.h>
@@ -50,11 +51,6 @@ int main()
 		void* tr_ret=NULL;
 		pthread_join(readers[i],&tr_ret);
 	}
- 	for (int i=0;i<READERS_COUNT;i++)
- 	{
- 		void* tr_ret=NULL;
- 		pthread_de(readers[i],&tr_ret);
- 	}
-
+ 	delete[] readers;
 	return 0;
 }
