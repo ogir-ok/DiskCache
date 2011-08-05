@@ -12,12 +12,6 @@ void FSDriver::Create(char* DiskConfigFile)
 {
 	_pInstance= new FSDriver(DiskConfigFile);
 }
-
-/*FSDriver* FSDriver::operator->()
-{
-	return _pInstance;
-}
-*/
 FSDriver* FSDriver::Instance()
 {
 	if(NULL == _pInstance)
@@ -37,7 +31,6 @@ FSDriver::FSDriver(char* DiskConfigFile)
 {
 	FILE* configFile = fopen(DiskConfigFile, "r");
 	fscanf(configFile, "%d\n", &(this->_areaCount));
-	//this->_areaList = vector<FSArea>(10);
 	for (int i = 0; i < this->_areaCount; i++)
 	{
 		char diskPath[1024];
