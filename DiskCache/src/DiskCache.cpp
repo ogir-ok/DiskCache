@@ -26,7 +26,7 @@ DiskCache::~DiskCache()
 BlockData DiskCache::Read(int fsId, int pos, int len)
 {
 	_mutex->Lock();
-	int block = (pos % BLOCK_SIZE);
+	int block = (pos / BLOCK_SIZE);
 	DiskBuff* ans =	 _diskBuffHashTable->Get(fsId,block);
 
 	if(NULL == ans)
@@ -53,6 +53,7 @@ BlockData DiskCache::Read(int fsId, int pos, int len)
 		}
 		ans->fsId = fsId;
 		ans->fsBlockNum = block;
+		ans->pData = new char[BLOCK_SIZE];
 		FSDriver::Instance()->GetBlock(fsId, block,&(ans->pData));
 		_diskBuffHashTable->Add(ans);
 	}
