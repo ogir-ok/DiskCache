@@ -30,8 +30,8 @@ public:
 	static void Destroy();
 	static void Create(const char* DiskConfigFile);
 	static FSDriver* Instance();
-	BlockData GetBlock(int fsId, int BlockNum);
-	void SetBlock(int fsId, int BlockNum, BlockData value);
+	int GetBlock(int fsId, int blockNum, BlockData* container);
+	int SetBlock(int fsId, int blockNum, BlockData value);
 };
 
 #endif /* FSDRIVER_H_ */

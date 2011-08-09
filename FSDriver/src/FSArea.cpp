@@ -19,19 +19,19 @@ FSArea::~FSArea()
 	delete _file;
 }
 
-BlockData FSArea::GetBlock(int BlockNum)
-{
-	_file->Lseek((BlockNum-1)*BLOCK_SIZE);
-	BlockData buff;
-	buff = _file->Read(BLOCK_SIZE);
-	printf("%s\n", buff);
-	return buff;
+int FSArea::GetBlock(int blockNum, BlockData* container)
+{	int error=0;
+	error = _file->Lseek(blockNum*BLOCK_SIZE);
+	error = _file->Read(container, BLOCK_SIZE);
+	return error;
 }
 
-void FSArea::SetBlock(int BlockNum,BlockData value)
+int FSArea::SetBlock(int blockNum,BlockData value)
 {
-	_file->Lseek((BlockNum-1)*BLOCK_SIZE);
-	_file->Write(value,BLOCK_SIZE);
+	int error = 0;
+	error = _file->Lseek(blockNum*BLOCK_SIZE);
+	error = _file->Write(value,BLOCK_SIZE);
+	return error;
 }
 
 FSArea::FSArea()

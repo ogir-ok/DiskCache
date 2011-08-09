@@ -62,13 +62,13 @@ FSDriver::~FSDriver()
 	}
 }
 
-BlockData FSDriver::GetBlock(int fsId, int BlockNum)
+int FSDriver::GetBlock(int fsId, int blockNum, BlockData* container)
 {
-	return _areaList[fsId]->GetBlock(BlockNum);
+	return _areaList[fsId]->GetBlock(blockNum,container);
 }
 
-void FSDriver::SetBlock(int fsId, int BlockNum, BlockData value)
+int FSDriver::SetBlock(int fsId, int blockNum, BlockData value)
 {
-	_areaList[fsId]->SetBlock(BlockNum,value);
+	return _areaList[fsId]->SetBlock(blockNum,value);
 }
 

@@ -15,7 +15,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <CrossPthreadMutex.h>
 #include <File.h>
 
 #define DISKS_CONFIG_FILE "./.disks.conf"
@@ -30,8 +29,8 @@ public:
 	FSArea(const char* fileName);
 	FSArea()  ;
 	~FSArea();
-	BlockData GetBlock(int BlockNum);
-	void SetBlock(int BlockNum,BlockData value);
+	int GetBlock(int blockNum, BlockData* container);
+	int SetBlock(int blockNum, BlockData value);
 };
 
 #endif /* FSAREA_H_ */
