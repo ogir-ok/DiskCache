@@ -8,85 +8,63 @@
 
 DiskBuffList::DiskBuffList()
 {
-	this->_pHead=NULL;
-	this->_pTail=NULL;
-	//this->_rwlock = new CrossPthreadRWLock();
-//	this->_countElemLock= new CrossPthreadMutex();
-	this->_countElem=0;
-
+	_pHead = NULL;
+	_pTail = NULL;
+	_countElem = 0;
 }
 
 DiskBuffList::~DiskBuffList()
 {
-	delete this->_pHead;
-	delete this->_pTail;
-//	delete this->_countElemLock;
-//	delete this->_rwlock;
+	delete _pHead;
+	delete _pTail;
 }
 
 void DiskBuffList::AddToTail(DiskBuff* addBuff)
 {
-//	this->_rwlock->WrLock();
 	DiskBuff* newElement = addBuff;
-	newElement->pFreeNext=NULL;
-	newElement->pFreePrev = this->_pTail;
-	if (NULL != this->_pTail)
+	newElement->pFreeNext = NULL;
+	newElement->pFreePrev = _pTail;
+	if (NULL != _pTail)
 	{
-		_pTail->pFreePrev=newElement;
+		_pTail->pFreePrev = newElement;
 	}
-	this->_pTail=newElement;
-	if (NULL == this-> _pHead)
+	_pTail = newElement;
+	if (NULL == _pHead)
 	{
-		this->_pHead=newElement;
+		_pHead = newElement;
 	}
-//	this->_rwlock->Unlock();
-
-	//this->_countElemLock->Lock();
 	_countElem++;
-	//this->_countElemLock->Unlock();
 }
 
 void DiskBuffList::Delete(DiskBuff * currentElement)
 {
-	//this->_rwlock->WrLock();
-	if (NULL!=currentElement)
+	if (NULL! = currentElement)
 	{
-		if (this->_pHead == currentElement)
+		if (_pHead == currentElement)
 		{
-			this->_pHead = currentElement->pFreeNext;
+			_pHead = currentElement->pFreeNext;
 			delete currentElement;
 		}
 		else
-		if (this->_pTail == currentElement)
+		if (_pTail == currentElement)
 		{
-			this->_pTail = currentElement->pFreePrev;
+			_pTail = currentElement->pFreePrev;
 			delete currentElement;
 		}
 		else
 		{
-			currentElement->pFreeNext->pFreePrev=currentElement->pFreePrev;
-			currentElement->pFreePrev->pFreeNext=currentElement->pFreeNext;
-
-	//		this->_countElemLock->Lock();
-				_countElem--;
-
-	//		this->_countElemLock->Unlock();
-
+			currentElement->pFreeNext->pFreePrev = currentElement->pFreePrev;
+			currentElement->pFreePrev->pFreeNext = currentElement->pFreeNext;
+			_countElem--;
 			delete currentElement;
 		}
 	}
-//	this->_rwlock->Unlock();
-
 }
 
 DiskBuff* DiskBuffList::GetHead()
 {
 	DiskBuff * temp = NULL;
-//	this->_rwlock->RdLock();
-
-	temp = this->_pHead;
-
-	//this->_rwlock->Unlock();
+	temp = _pHead;
     return temp;
 }
 

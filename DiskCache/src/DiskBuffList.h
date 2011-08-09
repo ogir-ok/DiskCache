@@ -9,8 +9,8 @@
 #define DISKBUFFLIST_H_
 
 #include "DiskBuff.h"
-#include <CrossPthreadMutex.h>
-#include <CrossPthreadRWLock.h>
+#include <Mutex.h>
+#include <RWLock.h>
 #include <FSDriver.h>
 #include <stdlib.h>
 
@@ -19,8 +19,6 @@ class DiskBuffList
 private:
 	DiskBuff* _pHead;
 	DiskBuff* _pTail;
-	//CrossPthreadRWLock* _rwlock; 			//lock class
-	//CrossPthreadMutex* 	_countElemLock;	//mutex for variable countelement
 	int _countElem;
 public:
 	DiskBuffList();

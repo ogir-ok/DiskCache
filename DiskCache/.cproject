@@ -32,7 +32,7 @@
 								<option id="gnu.cpp.compiler.option.optimization.level.1845265220" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.debugging.level.1863651217" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1130696754" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossPthread/src"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/Threading/src"/>
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossFile/src"/>
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/FSDriver/src"/>
 								</option>
@@ -54,12 +54,12 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.1939827605" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base">
 								<option id="gnu.cpp.link.option.libs.1069052323" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="FSDriver"/>
-									<listOptionValue builtIn="false" value="CrossFile"/>
-									<listOptionValue builtIn="false" value="CrossPthread"/>
+									<listOptionValue builtIn="false" value="File"/>
+									<listOptionValue builtIn="false" value="Threading"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.433987214" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossPthread/Debug/"/>
-									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossFile/Debug"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/Threading/Debug/"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/File/Debug"/>
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/FSDriver/Debug"/>
 								</option>
 								<option defaultValue="true" id="gnu.cpp.link.option.shared.2033487982" name="Shared (-shared)" superClass="gnu.cpp.link.option.shared" valueType="boolean"/>

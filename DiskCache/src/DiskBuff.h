@@ -9,7 +9,7 @@
 #ifndef DISKBUFF_H_
 #define DISKBUFF_H_
 
-#include <CrossPthreadMutex.h>
+#include <Mutex.h>
 
 class DiskBuff
 {
@@ -18,7 +18,6 @@ class DiskBuff
 	int fsBlockNum;
 	char* pData;
 	int state;
-	//CrossPthreadMutex* stateLock;
 	DiskBuff* pFreeNext;
 	DiskBuff* pFreePrev;
 	DiskBuff* pFullNext;
@@ -26,6 +25,5 @@ class DiskBuff
 	DiskBuff();
 	~DiskBuff();
 };
-
 
 #endif /* DISKBUFF_H_ */

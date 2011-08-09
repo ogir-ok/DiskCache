@@ -11,8 +11,8 @@
 #define MAX_BUFF_COUNT 256
 
 #include <FSDriver.h>
-#include <CrossPthreadMutex.h>
-#include <CrossPthreadRWLock.h>
+#include <Mutex.h>
+#include <RWLock.h>
 #include "DiskBuffHashTable.h"
 #include "DiskBuffList.h"
 
@@ -22,7 +22,7 @@ private:
 	DiskBuffHashTable* _diskBuffHashTable;
 	DiskBuffList* _diskBuffFreeList;
 	FSDriver _fsDriver;
-	CrossPthreadMutex* _mutex;
+	Mutex* _mutex;
 	int _buffCount;
 public:
 	DiskCache(char* DiskConfigFile);
