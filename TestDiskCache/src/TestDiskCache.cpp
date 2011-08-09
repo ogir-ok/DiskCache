@@ -7,8 +7,8 @@
 //============================================================================
 
 #define DISK_CONF_FILE "/home/user/workspace/cpp/DiskCache/.disk.conf"
-#define READERS_COUNT 1000
-#define WRITERS_COUNT 1000
+#define READERS_COUNT 10
+#define WRITERS_COUNT 10
 #define FS_COUNT 6
 #define MAX_BLOCK 100
 #include <stdio.h>
@@ -16,8 +16,10 @@
 #include <pthread.h>
 #include <DiskCache.h>
 #include <ctime>
+
 DiskCache* cache;
 pthread_t* readers;
+
 pthread_t* writers;
 pthread_mutex_t rand_mutex;
 pthread_mutex_t console_mutex;
@@ -29,12 +31,20 @@ void* f_readers(void* arg)
 	srand(time(NULL));
 	int dr = rand() % MAX_BLOCK;
 	int fr = rand() % FS_COUNT;
-	pthread_mutex_unlock(&rand_mutex);
-	char* ret = cache->Read(fr, dr * BLOCK_SIZE, BLOCK_SIZE);
-	pthread_mutex_lock(&console_mutex);
-	printf("readed:%s\n",ret);
-	pthread_mutex_unlock(&console_mutex);
 
+	pthread_mutex_unlock(&rand_mutex);
+	char* ret;
+	try
+	{
+		ret = cache->Read(fr , dr * BLOCK_SIZE, BLOCK_SIZE);
+		pthread_mutex_lock(&console_mutex);
+		printf("read:%s\n",ret);
+		pthread_mutex_unlock(&console_mutex);
+	}
+	catch(char* exception)
+	{
+		printf("%s/n", exception);
+	}
 	return (void*)0;
 }
 void* f_writers(void* arg)
@@ -45,12 +55,18 @@ void* f_writers(void* arg)
 	int fr = rand() % FS_COUNT;
 	pthread_mutex_unlock(&rand_mutex);
 	char *a=(char*)malloc(BLOCK_SIZE*sizeof(char));
-	cache->Write(fr, dr * BLOCK_SIZE, BLOCK_SIZE,(char*)a);
+	try
+	{
+		cache->Write(fr, dr * BLOCK_SIZE, BLOCK_SIZE,(char*)a);
+		pthread_mutex_lock(&console_mutex);
+		printf("wrote\n");
+		pthread_mutex_unlock(&console_mutex);
+	}
+	catch(char* exception)
+	{
+		printf("%s/n", exception);
+	}
 	free(a);
-	pthread_mutex_lock(&console_mutex);
-	printf("writed\n");
-	pthread_mutex_unlock(&console_mutex);
-
 	return (void*)0;
 }
 

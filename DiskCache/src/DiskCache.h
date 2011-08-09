@@ -14,18 +14,19 @@
 #include <Mutex.h>
 #include <RWLock.h>
 #include "DiskBuffHashTable.h"
-#include "DiskBuffList.h"
+#include "DiskBuffFreeList.h"
 
 class DiskCache
 {
 private:
 	DiskBuffHashTable* _diskBuffHashTable;
-	DiskBuffList* _diskBuffFreeList;
+	DiskBuffFreeList* _diskBuffFreeList;
 	Mutex* _mutex;
 	int _buffCount;
 public:
 	DiskCache(char* DiskConfigFile);
 	~DiskCache();
+	void Commit();
 	BlockData Read(int fsId, int pos, int len);
 	void Write(int fsId, int pos, int len, BlockData value);
 };

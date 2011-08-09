@@ -1,25 +1,25 @@
 /*
- * DiskBuffList.cpp
+ * DiskBuffFreeList.cpp
  *
  *  Created on: Aug 1, 2011
  *      Author: user
  */
-#include"DiskBuffList.h"
+#include"DiskBuffFreeList.h"
 
-DiskBuffList::DiskBuffList()
+DiskBuffFreeList::DiskBuffFreeList()
 {
 	_pHead = NULL;
 	_pTail = NULL;
 	_countElem = 0;
 }
 
-DiskBuffList::~DiskBuffList()
+DiskBuffFreeList::~DiskBuffFreeList()
 {
 	delete _pHead;
 	delete _pTail;
 }
 
-void DiskBuffList::AddToTail(DiskBuff* addBuff)
+void DiskBuffFreeList::AddToTail(DiskBuff* addBuff)
 {
 	DiskBuff* newElement = addBuff;
 	newElement->pFreeNext = NULL;
@@ -36,7 +36,7 @@ void DiskBuffList::AddToTail(DiskBuff* addBuff)
 	_countElem++;
 }
 
-void DiskBuffList::Delete(DiskBuff * currentElement)
+void DiskBuffFreeList::Delete(DiskBuff * currentElement)
 {
 	if (NULL != currentElement)
 	{
@@ -61,7 +61,7 @@ void DiskBuffList::Delete(DiskBuff * currentElement)
 	}
 }
 
-DiskBuff* DiskBuffList::GetHead()
+DiskBuff* DiskBuffFreeList::GetHead()
 {
 	DiskBuff * temp = NULL;
 	temp = _pHead;

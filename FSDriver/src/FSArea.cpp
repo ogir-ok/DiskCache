@@ -20,17 +20,19 @@ FSArea::~FSArea()
 }
 
 int FSArea::GetBlock(int blockNum, BlockData* container)
-{	int error=0;
-	error = _file->Lseek(blockNum*BLOCK_SIZE);
-	error = _file->Read(container, BLOCK_SIZE);
+{	int error = 0;
+	error = _file->Lseek(blockNum* BLOCK_SIZE);
+	if (-1 != error)
+		error = _file->Read(container, BLOCK_SIZE);
 	return error;
 }
 
-int FSArea::SetBlock(int blockNum,BlockData value)
+int FSArea::SetBlock(int blockNum, BlockData value)
 {
 	int error = 0;
-	error = _file->Lseek(blockNum*BLOCK_SIZE);
-	error = _file->Write(value,BLOCK_SIZE);
+	error = _file->Lseek(blockNum* BLOCK_SIZE);
+	if (-1 != error)
+		error = _file->Write(value, BLOCK_SIZE);
 	return error;
 }
 

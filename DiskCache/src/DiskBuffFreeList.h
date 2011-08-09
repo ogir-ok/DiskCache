@@ -1,12 +1,12 @@
 /*
- * DiskBuffList.h
+ * DiskBuffFreeList.h
  *
  *  Created on: Aug 1, 2011
  *      Author: user
  */
 
-#ifndef DISKBUFFLIST_H_
-#define DISKBUFFLIST_H_
+#ifndef DISKBUFFREEFLIST_H_
+#define DISKBUFFREEFLIST_H_
 
 #include "DiskBuff.h"
 #include <Mutex.h>
@@ -14,15 +14,14 @@
 #include <FSDriver.h>
 #include <stdlib.h>
 
-class DiskBuffList
+class DiskBuffFreeList
 {
-private:
+public:
 	DiskBuff* _pHead;
 	DiskBuff* _pTail;
 	int _countElem;
-public:
-	DiskBuffList();
-	~DiskBuffList();
+	DiskBuffFreeList();
+	~DiskBuffFreeList();
 	void AddToTail(DiskBuff* addBuff);
 	void Delete(DiskBuff * el);
 	DiskBuff* GetHead() ;
@@ -31,4 +30,4 @@ public:
 
 
 
-#endif /* DISKBUFFLIST_H_ */
+#endif /* DISKBUFFREEFLIST_H_ */
