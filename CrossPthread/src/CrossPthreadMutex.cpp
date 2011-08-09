@@ -25,15 +25,15 @@ CrossPthreadMutex::~CrossPthreadMutex()
 void CrossPthreadMutex::Lock()
 {
 
-	printf("try lock \n");
+	//printf("try lock \n");
 	pthread_mutex_lock(&(this->_mutex));
-	printf("ok\n");
+	//printf("ok\n");
 }
 
 void CrossPthreadMutex::Unlock()
 {
 
-	printf("unlock\n");
+	//printf("unlock\n");
 	pthread_mutex_unlock(&(this->_mutex));
 }
 //#endif
