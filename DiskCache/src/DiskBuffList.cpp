@@ -38,7 +38,7 @@ void DiskBuffList::AddToTail(DiskBuff* addBuff)
 
 void DiskBuffList::Delete(DiskBuff * currentElement)
 {
-	if (NULL! = currentElement)
+	if (NULL != currentElement)
 	{
 		if (_pHead == currentElement)
 		{

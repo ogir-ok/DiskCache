@@ -14,7 +14,7 @@ class DiskBuffHashTable
 {
 private:
 	vector<DiskBuffFullList*>  _hash;
-	CrossPthreadRWLock _lock;
+	RWLock _lock;
 public:
 	DiskBuffHashTable();
 	~DiskBuffHashTable();

@@ -21,14 +21,13 @@ class DiskCache
 private:
 	DiskBuffHashTable* _diskBuffHashTable;
 	DiskBuffList* _diskBuffFreeList;
-	FSDriver _fsDriver;
 	Mutex* _mutex;
 	int _buffCount;
 public:
 	DiskCache(char* DiskConfigFile);
 	~DiskCache();
-	char* Read(int fsId, int pos, int len);
-	void Write(int fsId, int pos, int len, char* value);
+	BlockData Read(int fsId, int pos, int len);
+	void Write(int fsId, int pos, int len, BlockData value);
 };
 
 
