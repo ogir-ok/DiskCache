@@ -20,17 +20,15 @@ File::~File()
 
 int File::Lseek(int offset)
 {
-	int error = lseek(_fileStreamId,offset,SEEK_SET);
-	return error;
+	return lseek(_fileStreamId,offset,SEEK_SET);
 }
 
 int File::Read(BlockData* container, int size)
 {
-	int error = read(_fileStreamId,*(container),size);
-	return error;
+	return read(_fileStreamId,*(container),size);
 }
+
 int File::Write(BlockData value,int size)
 {
-	int error = write(_fileStreamId,value,size);
-	return error;
+	return write(_fileStreamId,value,size);
 }
