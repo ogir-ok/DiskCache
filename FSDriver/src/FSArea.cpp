@@ -9,39 +9,32 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-FSArea::FSArea(char* fileName)
+FSArea::FSArea(const char* fileName)
 {
-	//this->_mutex = new CrossPthreadMutex();
-	this->_fileStreamId = new CrossFile(fileName);
+	_fileStreamId = new CrossFile(fileName);
 }
 
 FSArea::~FSArea()
 {
-	//delete (this->_mutex);
-	//delete (this->_fileStreamId);
+	delete _fileStreamId;
 }
 
-char* FSArea::GetBlock(int BlockNum)
+BlockData FSArea::GetBlock(int BlockNum)
 {
-	//this->_mutex->Lock();
 	this->_fileStreamId->Lseek((BlockNum-1)*BLOCK_SIZE);
-	char* buff/*[BLOCK_SIZE]*/ ;
+	BlockData buff;
 	buff = this->_fileStreamId->Read(BLOCK_SIZE);
 	printf("%s\n", buff);
-	//this->_mutex->Unlock();
 	return buff;
 }
 
-void FSArea::SetBlock(int BlockNum,void* value)
+void FSArea::SetBlock(int BlockNum,BlockData value)
 {
-//	this->_mutex->Lock();
-	this->_fileStreamId->Lseek((BlockNum-1)*BLOCK_SIZE);
-	this->_fileStreamId->Write(value,BLOCK_SIZE);
-	//this->_mutex->Unlock();
+	_fileStreamId->Lseek((BlockNum-1)*BLOCK_SIZE);
+	_fileStreamId->Write(value,BLOCK_SIZE);
 }
-//
+
 FSArea::FSArea()
 {
-	//this->_mutex = new CrossPthreadMutex();
-	this->_fileStreamId = new CrossFile(NULL);
+	_fileStreamId = new CrossFile(NULL);
 }

@@ -10,8 +10,9 @@ FSDriver* FSDriver::_pInstance = NULL;
 
 void FSDriver::Create(char* DiskConfigFile)
 {
-	_pInstance= new FSDriver(DiskConfigFile);
+	_pInstance = new FSDriver(DiskConfigFile);
 }
+
 FSDriver* FSDriver::Instance()
 {
 	if(NULL == _pInstance)
@@ -21,24 +22,30 @@ FSDriver* FSDriver::Instance()
 	return _pInstance;
 }
 
-FSDriver::FSDriver()
+void FSDriver::InitFSDriver()
 {
-	this->_areaCount = 0;
+	_areaCount = 0;
 
 }
 
-FSDriver::FSDriver(char* DiskConfigFile)
+void FSDriver::InitConfigFile(char* DiskConfigFile)
 {
 	FILE* configFile = fopen(DiskConfigFile, "r");
-	fscanf(configFile, "%d\n", &(this->_areaCount));
+	fscanf(configFile, "%d\n", &_areaCount);
 	for (int i = 0; i < this->_areaCount; i++)
 	{
 		char diskPath[1024];
 		fscanf(configFile, "%s\n",(char*)diskPath);
 		printf("%s\n", diskPath);
 		FSArea * area = new FSArea(diskPath);
-		this->_areaList.push_back(area);
+		_areaList.push_back(area);
 	}
+}
+
+FSDriver::FSDriver(char* DiskConfigFile)
+{
+	InitFSDriver();
+	InitConfigFile(DiskConfigFile);
 }
 
 void FSDriver::Destroy()

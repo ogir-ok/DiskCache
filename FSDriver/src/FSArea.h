@@ -21,18 +21,18 @@
 #define DISKS_CONFIG_FILE "./.disks.conf"
 #define BLOCK_SIZE 4
 
-
+typedef char*  BlockData;
 class FSArea
 {
 private:
 	//CrossPthreadMutex* _mutex;
 	CrossFile* _fileStreamId;
 public:
-	FSArea(char* fileName);
+	FSArea(const char* fileName);
 	FSArea();
 	~FSArea();
-	char* GetBlock(int BlockNum);
-	void SetBlock(int BlockNum,void* value);
+	BlockData GetBlock(int BlockNum);
+	void SetBlock(int BlockNum,BlockData value);
 };
 
 #endif /* FSAREA_H_ */

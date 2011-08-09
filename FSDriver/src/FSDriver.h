@@ -5,8 +5,6 @@
  *      Author: user
  */
 
-
-
 #ifndef FSDRIVER_H_
 #define FSDRIVER_H_
 
@@ -25,12 +23,12 @@ private:
 	vector<FSArea *> _areaList;
 	static FSDriver* _pInstance;
 	FSDriver (char* DiskConfigFile);
+	void InitFSDriver();
+	void InitConfigFile(char* DiskConfigFile);
 public:
-	FSDriver();
 	static void Destroy();
 	static void Create(char* DiskConfigFile);
 	static FSDriver* Instance();
-//	FSDriver* operator->();
 	~FSDriver();
 	char* GetBlock(int fsId, int BlockNum);
 	void SetBlock(int fsId, int BlockNum, void* value);
