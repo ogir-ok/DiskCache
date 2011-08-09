@@ -1,24 +1,24 @@
 /*
- * CrossPthreadRWLock.h
+ * RWLock.h
  *
  *  Created on: Jul 29, 2011
  *      Author: user
  */
 
-#ifndef CROSSPTHREADRWLOCK_H_
-#define CROSSPTHREADRWLOCK_H_
+#ifndef RWLOCK_H_
+#define RWLOCK_H_
 
 #include <pthread.h>
 
 //#ifdef LINUX
 
-class CrossPthreadRWLock
+class RWLock
 {
 private:
 	pthread_rwlock_t _rwlock;
 public:
-	CrossPthreadRWLock();
-	~CrossPthreadRWLock();
+	RWLock();
+	~RWLock();
 	void WrLock();
 	void RdLock();
 	void Unlock();
@@ -26,4 +26,4 @@ public:
 
 //#endif
 
-#endif /* CROSSPTHREADRWLOCK_H_ */
+#endif /* RWLOCK_H_ */

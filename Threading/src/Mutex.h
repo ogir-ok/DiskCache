@@ -1,38 +1,38 @@
 /*
- * CrossPthreadMutex.h
+ * Mutex.h
  *
  *  Created on: Jul 29, 2011
  *      Author: user
  */
-#ifndef CROSSPTHREADMUTEX_H_
-#define CROSSPTHREADMUTEX_H_
+#ifndef MUTEX_H_
+#define MUTEX_H_
 
 //#ifdef LINUX
 
 #include <pthread.h>
 
-class CrossPthreadMutex
+class Mutex
 {
 private:
 	pthread_mutex_t _mutex;
 public:
-	CrossPthreadMutex();
-	~CrossPthreadMutex();
+	Mutex();
+	~Mutex();
 	void Lock();
 	void Unlock();
 };
 /*
 #elif WINDOWS
-class CrossPthreadMutex
+class Mutex
 {
 private:
 	pthread_mutex_t _mutex;
 public:
-	CrossPthreadMutex();
-	~CrossPthreadMutex();
+	Mutex();
+	~Mutex();
 	void Lock();
 	void Unlock();
 };*/
 //#endif
 
-#endif /* CROSSPTHREADMUTEX_H_ */
+#endif /* MUTEX_H_ */
