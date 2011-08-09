@@ -8,7 +8,7 @@
 #include "CrossFile.h"
 //#ifdef LINUX
 
-CrossFile::CrossFile(char *fileName)
+CrossFile::CrossFile(const char *fileName)
 {
 	_fileStreamId = open(fileName,O_RDWR|O_SYNC);//func
 }
@@ -20,12 +20,12 @@ CrossFile::~CrossFile()
 
 void CrossFile::Lseek(int offset)
 {
-	lseek(this->_fileStreamId,offset,SEEK_SET);
+	lseek(_fileStreamId,offset,SEEK_SET);
 }
 
-char* CrossFile::Read(int size)
+BlockData CrossFile::Read(int size)
 {
-	char* temp = (char*)malloc(size * sizeof(char));//new
+	BlockData temp = (char*)malloc(size * sizeof(char));//new
 
 	if (temp == NULL) {//exception
 		perror("malloc");
@@ -38,8 +38,8 @@ char* CrossFile::Read(int size)
 }
 
 
-void CrossFile::Write(void* value,int size)
+void CrossFile::Write(BlockData value,int size)
 {
-	write(this->_fileStreamId,value,size);
+	write(_fileStreamId,value,size);
 }
 //#endif

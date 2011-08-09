@@ -20,11 +20,11 @@ class CrossFile
 private:
 	int _fileStreamId;
 public:
-	CrossFile(char *fileName);
+	CrossFile(const char *fileName);
 	~CrossFile();
 	void Lseek(int pos);
-	char* Read(int size);
-	void Write(void* value,int size);
+	BlockData Read(int size);
+	void Write(BlockData value,int size);
 };
 //#endif
 
