@@ -26,7 +26,7 @@ DiskCache::~DiskCache()
 BlockData DiskCache::Read(int fsId, int pos, int len)
 {
 	_mutex->Lock();
-	int block = (pos % BLOCK_SIZE);
+	int block = (pos / BLOCK_SIZE);
 	DiskBuff* ans =	 _diskBuffHashTable->Get(fsId,block);
 
 	if(NULL == ans)
