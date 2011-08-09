@@ -8,7 +8,7 @@
 
 FSDriver* FSDriver::_pInstance = NULL;
 
-void FSDriver::Create(char* DiskConfigFile)
+void  FSDriver::Create(const char* DiskConfigFile)
 {
 	_pInstance = new FSDriver(DiskConfigFile);
 }
@@ -28,11 +28,11 @@ void FSDriver::InitFSDriver()
 
 }
 
-void FSDriver::InitConfigFile(char* DiskConfigFile)
+void FSDriver::InitConfigFile(const char* DiskConfigFile)
 {
 	FILE* configFile = fopen(DiskConfigFile, "r");
 	fscanf(configFile, "%d\n", &_areaCount);
-	for (int i = 0; i < this->_areaCount; i++)
+	for (int i = 0; i < _areaCount; i++)
 	{
 		char diskPath[1024];
 		fscanf(configFile, "%s\n",(char*)diskPath);
@@ -42,7 +42,7 @@ void FSDriver::InitConfigFile(char* DiskConfigFile)
 	}
 }
 
-FSDriver::FSDriver(char* DiskConfigFile)
+FSDriver::FSDriver(const char* DiskConfigFile)
 {
 	InitFSDriver();
 	InitConfigFile(DiskConfigFile);
@@ -55,19 +55,19 @@ void FSDriver::Destroy()
 
 FSDriver::~FSDriver()
 {
-	for (int i = 0; i < this->_areaCount; i++)
+	for (int i = 0; i < _areaCount; i++)
 	{
-		delete this->_areaList[i];
+		delete _areaList[i];
 	}
 }
 
-char* FSDriver::GetBlock(int fsId, int BlockNum)
+BlockData FSDriver::GetBlock(int fsId, int BlockNum)
 {
-	return this->_areaList[fsId]->GetBlock(BlockNum);
+	return _areaList[fsId]->GetBlock(BlockNum);
 }
 
-void FSDriver::SetBlock(int fsId, int BlockNum, void* value)
+void FSDriver::SetBlock(int fsId, int BlockNum, BlockData value)
 {
-	this->_areaList[fsId]->SetBlock(BlockNum,value);
+	_areaList[fsId]->SetBlock(BlockNum,value);
 }
 

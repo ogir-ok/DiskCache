@@ -21,9 +21,9 @@ FSArea::~FSArea()
 
 BlockData FSArea::GetBlock(int BlockNum)
 {
-	this->_fileStreamId->Lseek((BlockNum-1)*BLOCK_SIZE);
+	_fileStreamId->Lseek((BlockNum-1)*BLOCK_SIZE);
 	BlockData buff;
-	buff = this->_fileStreamId->Read(BLOCK_SIZE);
+	buff = _fileStreamId->Read(BLOCK_SIZE);
 	printf("%s\n", buff);
 	return buff;
 }

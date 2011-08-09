@@ -22,16 +22,16 @@ private:
 	int _areaCount;
 	vector<FSArea *> _areaList;
 	static FSDriver* _pInstance;
-	FSDriver (char* DiskConfigFile);
+	FSDriver (const char* DiskConfigFile);
 	void InitFSDriver();
-	void InitConfigFile(char* DiskConfigFile);
+	void InitConfigFile(const char* DiskConfigFile);
 public:
 	static void Destroy();
-	static void Create(char* DiskConfigFile);
+	static void Create(const char* DiskConfigFile);
 	static FSDriver* Instance();
 	~FSDriver();
-	char* GetBlock(int fsId, int BlockNum);
-	void SetBlock(int fsId, int BlockNum, void* value);
+	BlockData GetBlock(int fsId, int BlockNum);
+	void SetBlock(int fsId, int BlockNum, BlockData value);
 };
 
 #endif /* FSDRIVER_H_ */

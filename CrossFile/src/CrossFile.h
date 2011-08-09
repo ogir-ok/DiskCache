@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef char*  BlockData;
 
 class CrossFile
 {

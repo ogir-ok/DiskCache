@@ -21,7 +21,7 @@
 #define DISKS_CONFIG_FILE "./.disks.conf"
 #define BLOCK_SIZE 4
 
-typedef char*  BlockData;
+
 class FSArea
 {
 private:
