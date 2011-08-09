@@ -16,7 +16,7 @@
 #include <stdio.h>
 
 #include <CrossPthreadMutex.h>
-#include <CrossFile.h>
+#include <File.h>
 
 #define DISKS_CONFIG_FILE "./.disks.conf"
 #define BLOCK_SIZE 4
@@ -25,11 +25,10 @@
 class FSArea
 {
 private:
-	//CrossPthreadMutex* _mutex;
-	CrossFile* _fileStreamId;
+	File* _file;
 public:
 	FSArea(const char* fileName);
-	FSArea();
+	FSArea()  ;
 	~FSArea();
 	BlockData GetBlock(int BlockNum);
 	void SetBlock(int BlockNum,BlockData value);

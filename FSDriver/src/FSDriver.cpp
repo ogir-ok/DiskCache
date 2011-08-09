@@ -4,6 +4,7 @@
  *  Created on: Jul 27, 2011
  *      Author: user
  */
+
 #include "FSDriver.h"
 
 FSDriver* FSDriver::_pInstance = NULL;
@@ -59,6 +60,11 @@ FSDriver::~FSDriver()
 	{
 		delete _areaList[i];
 	}
+}
+
+void FSDriver::Commit()
+{
+
 }
 
 BlockData FSDriver::GetBlock(int fsId, int BlockNum)

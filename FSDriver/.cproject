@@ -34,8 +34,9 @@
 								<option id="gnu.cpp.compiler.option.other.other.1046955176" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -fPIC -pthread" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.include.paths.823455934" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossPthread/src"/>
-									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossFile/src"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/File/src"/>
 								</option>
+								<option id="gnu.cpp.compiler.option.other.pic.1154272228" superClass="gnu.cpp.compiler.option.other.pic" value="true" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.487508689" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.so.debug.1938956578" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.so.debug">
@@ -54,7 +55,7 @@
 								</option>
 								<option id="gnu.cpp.link.option.paths.322780523" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossPthread/Debug"/>
-									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/CrossFile/Debug"/>
+									<listOptionValue builtIn="false" value="/home/user/workspace/cpp/DiskCache/File/Debug"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1652136463" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>

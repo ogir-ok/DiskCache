@@ -11,30 +11,30 @@
 
 FSArea::FSArea(const char* fileName)
 {
-	_fileStreamId = new CrossFile(fileName);
+	_file = new File(fileName);
 }
 
 FSArea::~FSArea()
 {
-	delete _fileStreamId;
+	delete _file;
 }
 
 BlockData FSArea::GetBlock(int BlockNum)
 {
-	_fileStreamId->Lseek((BlockNum-1)*BLOCK_SIZE);
+	_file->Lseek((BlockNum-1)*BLOCK_SIZE);
 	BlockData buff;
-	buff = _fileStreamId->Read(BLOCK_SIZE);
+	buff = _file->Read(BLOCK_SIZE);
 	printf("%s\n", buff);
 	return buff;
 }
 
 void FSArea::SetBlock(int BlockNum,BlockData value)
 {
-	_fileStreamId->Lseek((BlockNum-1)*BLOCK_SIZE);
-	_fileStreamId->Write(value,BLOCK_SIZE);
+	_file->Lseek((BlockNum-1)*BLOCK_SIZE);
+	_file->Write(value,BLOCK_SIZE);
 }
 
 FSArea::FSArea()
 {
-	_fileStreamId = new CrossFile(NULL);
+	_file = new File(NULL);
 }

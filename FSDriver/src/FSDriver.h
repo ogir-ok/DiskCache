@@ -25,11 +25,12 @@ private:
 	FSDriver (const char* DiskConfigFile);
 	void InitFSDriver();
 	void InitConfigFile(const char* DiskConfigFile);
+	~FSDriver();
 public:
 	static void Destroy();
 	static void Create(const char* DiskConfigFile);
 	static FSDriver* Instance();
-	~FSDriver();
+	void Commit();
 	BlockData GetBlock(int fsId, int BlockNum);
 	void SetBlock(int fsId, int BlockNum, BlockData value);
 };
