@@ -30,7 +30,6 @@ public:
 	static void Destroy();
 	static void Create(const char* DiskConfigFile);
 	static FSDriver* Instance();
-	void Commit();
 	BlockData GetBlock(int fsId, int BlockNum);
 	void SetBlock(int fsId, int BlockNum, BlockData value);
 };

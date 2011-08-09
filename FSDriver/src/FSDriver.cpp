@@ -62,11 +62,6 @@ FSDriver::~FSDriver()
 	}
 }
 
-void FSDriver::Commit()
-{
-
-}
-
 BlockData FSDriver::GetBlock(int fsId, int BlockNum)
 {
 	return _areaList[fsId]->GetBlock(BlockNum);
